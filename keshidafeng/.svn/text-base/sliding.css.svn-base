@@ -1,0 +1,11 @@
+
+.copyright{
+	text-align:center;font-size:16px;color:#666;
+}
+.tijiao{
+	width:135px;
+	height:36px;
+	font-size: 25px;
+	background:url("images/bg26.jpg") no-repeat left top;
+	color:#FFF;
+}

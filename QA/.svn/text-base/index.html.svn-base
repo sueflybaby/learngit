@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="show.css" rel="stylesheet" type="text/css" />
+
+<title>玉医青年《Q&A》展示网页</title>
+</head>
+<body>
+
+<div id="area">
+	<h1>1</h1>
+	<p id="title">标题：1111111111111111111111</p>
+	<p id="nick">昵称</p>
+	<div id="seperate"></div>
+	<p id="content">内容</p>
+
+
+</div>
+<div id="seperate"></div>
+<hr/>
+
+</body>
+</html>

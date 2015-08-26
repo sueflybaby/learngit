@@ -1,0 +1,87 @@
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	margin:0;
+	padding:0;
+	font-size:63%;
+	color:#000;
+}
+h1{
+	margin-top: 30px;
+	text-align: center;
+}
+.input_on{
+	padding:2px 8px 0pt 3px;
+	height:18px;
+	border:1px solid #999;
+	background-color:#FFFFCC;
+}
+.input_off{
+	padding:2px 8px 0pt 3px;
+	height:18px;
+	border:1px solid #CCC;
+	background-color:#FFF;
+}
+.input_move{
+	padding:2px 8px 0pt 3px;
+	height:18px;
+	border:1px solid #999;
+	background-color:#FFFFCC;
+}
+.input_out{
+
+	padding:2px 8px 0pt 3px;
+	height:18px;
+	border:1px solid #CCC;
+	background-color:#FFF;
+}
+
+ul.input_test{
+	padding-left: 0px;
+	margin:0 auto 0 auto;
+	width:200px;
+	list-style-type:none;
+}
+ul.input_test li{
+	width:200px;
+	height:22px;
+	margin-bottom:10px;
+}
+.input_test label{
+	float:left;
+	padding-right:10px;
+	width:60px;
+	line-height:22px;
+	text-align:right;
+	font-size:1.6em;
+}
+.input_test p{
+	float:left;
+	_margin-top:-1px;
+}
+.input_test span{
+	float:left;
+	padding-left:10px;
+	line-height:22px;
+	text-align:left;
+	font-size:1.2em;
+	color:#999;
+}
+.hr_class{
+	float: left;
+	margin-top: 20px;
+	width: 100%;
+}
+.button_submit{
+	float: left;
+	margin-left: -35px;
+	margin-top: 30px;
+	height: 30px;
+	width: 80px;
+	font-size: 20px;
+}
+
+</style>

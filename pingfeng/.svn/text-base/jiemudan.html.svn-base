@@ -1,0 +1,107 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>寻找身边的·天使之音(决赛) 节目单</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta charset="utf-8">
+        <style type="text/css">
+        body{
+            background-color: #6699CC;
+            color: #FFFFFF;
+            text-align: center;
+            text-shadow: 0px 1px 1px black;
+        }
+        .admin{
+	        margin-left: 50%;
+        }
+        .personal_cen{
+            text-align: justify;
+            width: 250px;
+            border: 1px dashed red;
+            margin-left: -135px;
+            padding: 10px;
+        }
+        .copyright{
+        	
+	        font-size: 12px;
+	        color: #99CCFF;
+	        text-align: center;
+        }
+        .beizhu{
+	        color: white;
+	        font-size: 13px;
+        }
+        .button_submit{
+	        text-align: center;
+        }
+        p{
+	        text-align: center;
+        }
+        h4{
+            text-align: center;
+        }
+
+        </style>	
+
+    </head> 
+    <body> 
+                
+                <p><img src="title_small.png" /></p>
+                <h2 align="center">县卫生系统青年歌手大赛 决赛</h2>
+                <h3 align="center">节目单</h3>
+                <div class="admin">
+            <div class="personal_cen">
+                <h4>A组</h4>
+                <ol>
+                <li>
+	                <p>洪伟峰:心如刀割</p>
+                </li>
+                <li>
+					<p>张鹏：小情歌<br>
+                </li>
+                <li>
+					<p>芦富强：单身情歌</p>
+                </li>
+                <li>
+					<p>王丽娜：不如跳舞<br>
+                </li>
+                </ol>
+                <h4>B组</h4>
+                <ol>
+                <li>
+                    <p>王伟 骆丹:生活&安可</p>
+                </li>
+                <li>
+                    <p>项方玉：我等到花儿也谢了<br>
+                </li>
+                <li>
+                    <p>李旸子：夜夜夜夜</p>
+                </li>
+                <li>
+                    <p>庄植凯：空白格<br>
+                </li>
+                </ol>
+                <h4>C组</h4>
+                <ol>
+                <li>
+                    <p>高建:可惜不是你</p>
+                </li>
+                <li>
+                    <p>曹瞿波：当我想你的时候<br>
+                </li>
+                <li>
+                    <p>陈坤威：新不了情</p>
+                </li>
+                <li>
+                    <p>章华安：九寨之子<br>
+                </li>
+                </ol>
+	            </div>
+            
+               </div>
+               
+               <p class="copyright">玉医青年·团委</p>   
+    </body>
+</html>

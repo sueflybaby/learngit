@@ -1,0 +1,102 @@
+{
+    "button": [
+        {
+            "name": "个人中心", 
+            "sub_button": [
+                {
+                    "type": "click", 
+                    "name": "玉医小店", 
+                    "key": "小店", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "click", 
+                    "name": "个人积分", 
+                    "key": "个人", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "click", 
+                    "name": "实名登记", 
+                    "key": "登记", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "click", 
+                    "name": "每日一答", 
+                    "key": "每日一答", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "click", 
+                    "name": "获取积分", 
+                    "key": "9625", 
+                    "sub_button": [ ]
+                }
+            ]
+        }, 
+        {
+            "name": "信息服务", 
+            "sub_button": [
+                {
+                    "type": "view", 
+                    "name": "外卖", 
+                    "url": "http://yyqn.sinaapp.com/waimai/index.html", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "click", 
+                    "name": "跳蚤市场", 
+                    "key": "跳蚤", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "违章", 
+                    "url": "http://126.am/5OXwz1", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "view", 
+                    "name": "车票", 
+                    "url": "http://m.zjyhqy.com/", 
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "click", 
+                    "name": "随身通讯录", 
+                    "key": "通讯录", 
+                    "sub_button": [ ]
+                }
+            ]
+        }, 
+        {
+            "name": "青歌赛", 
+            "sub_button": [
+                {
+                    "type": "view", 
+                    "name": "节目单", 
+                    "url": "http://yyqn.sinaapp.com/pingfeng/jiemudan.html",
+                    "sub_button": [ ]
+                }, 
+                {
+                    "type": "click", 
+                    "name": "决赛规则", 
+                    "key": "tuwen01", 
+                    "sub_button": [ ]
+                }, 
+                
+                {
+                    "type": "click", 
+                    "name": "人气奖规则", 
+                    "key": "tuwen03", 
+                    "sub_button": [ ]
+                },{
+                    "type": "click", 
+                    "name": "人气奖评选页面", 
+                    "key": "人气", 
+                    "sub_button": [ ]
+                }            ]
+        }
+    ]
+}

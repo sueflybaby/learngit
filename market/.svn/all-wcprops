@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/yyqn/!svn/ver/197/1/market
+END
+api.php
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/yyqn/!svn/ver/19/1/market/api.php
+END
+market_admin.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/yyqn/!svn/ver/166/1/market/market_admin.php
+END
+checkopenid.php
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/yyqn/!svn/ver/19/1/market/checkopenid.php
+END
+market_charge.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/yyqn/!svn/ver/19/1/market/market_charge.php
+END
+conn.php
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/yyqn/!svn/ver/19/1/market/conn.php
+END
+market_makeitused.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/yyqn/!svn/ver/124/1/market/market_makeitused.php
+END
+test.php
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/yyqn/!svn/ver/19/1/market/test.php
+END
+market_check.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/yyqn/!svn/ver/19/1/market/market_check.php
+END
+market_makeit_unused.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/yyqn/!svn/ver/19/1/market/market_makeit_unused.php
+END
+xinyuan_admin.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/yyqn/!svn/ver/197/1/market/xinyuan_admin.php
+END
+api_v5kf.php
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/yyqn/!svn/ver/19/1/market/api_v5kf.php
+END
+market_charge_v5kf.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/yyqn/!svn/ver/19/1/market/market_charge_v5kf.php
+END
+conn_shophistory.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/yyqn/!svn/ver/19/1/market/conn_shophistory.php
+END
+market_admin_repick.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/yyqn/!svn/ver/38/1/market/market_admin_repick.php
+END

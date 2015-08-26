@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="积分抽奖" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>幸运大转盘</title>
+<link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="jQueryRotate.2.2.js"></script>
+<script type="text/javascript" src="jquery.easing.min.js"></script>
+
+<script type="text/javascript">
+var localurl = location.href;
+function getParameter(paraStr, url)   
+{     
+var result = "";   
+//获取URL中全部参数列表数据     
+var str = "&" + url.split("?")[1];    
+var paraName = paraStr + "=";    
+//判断要获取的参数是否存在    
+if(str.indexOf("&"+paraName)!=-1)    
+{     
+      //如果要获取的参数到结尾是否还包含“&”    
+      if(str.substring(str.indexOf(paraName),str.length).indexOf("&")!=-1)   
+      {     
+      //得到要获取的参数到结尾的字符串     
+       var TmpStr=str.substring(str.indexOf(paraName),str.length);    
+        //截取从参数开始到最近的“&”出现位置间的字符    
+         result=TmpStr.substr(TmpStr.indexOf(paraName),TmpStr.indexOf("&")-TmpStr.indexOf(paraName));      
+       }else{   
+         result=str.substring(str.indexOf(paraName),str.length);    
+        }   
+        }   
+        else  
+        {       
+         result="无此参数";    
+         }     
+        return (result.replace("&",""));      
+    
+    } 
+
+    var r = getParameter("openid",localurl);   
+    var pValue = r.split("=")[1]; //获取参数值    
+
+
+    var gametime = 0;
+    var xmlHttp;
+    // Firefox, Opera 8.0+, Safari
+    xmlHttp = new XMLHttpRequest();
+
+$(function(){
+	$("#startbtn").rotate({
+		bind:{
+			click:function(){
+      	  var b = Math.floor(Math.random() * 360);
+	  gametime++;
+
+		 $(this).rotate({
+			 	duration:3000,
+			 	angle: 0, 
+				animateTo:1440+b,
+				easing: $.easing.easeOutSine,
+				callback: function(){
+				}
+				 });
+			
+
+xmlHttp.onreadystatechange = function(){
+if (xmlHttp.readyState == 4){
+      var obj = eval('('+ xmlHttp.responseText +')');
+      //var obj = eval(({"id":"123","name":"elar","age":"21"}));
+      var a = obj.randomnum;
+      setTimeout(
+          function(){
+      if (a<30) {
+               var str2 = "恭喜您获得4点积分，您的中奖号码是：";
+               document.getElementById('reward').innerHTML=obj.words+str2+obj.secret_id;
+
+            }
+            else if (a<60) {
+               var str2 = "太可惜了！再来一次？";
+               document.getElementById('reward').innerHTML=obj.words+str2;
+            }
+            else if (a<90) {
+               var str2 = "恭喜您获得1点积分，您的中奖号码是：";
+               document.getElementById('reward').innerHTML=obj.words+str2+obj.secret_id;
+
+            }
+            else if (a<120) {
+               var str2 = "太可惜了！再来一次？";
+               document.getElementById('reward').innerHTML=obj.words+str2;
+            }
+            else if (a<150) {
+               var str2 = "太可惜了！再来一次？";
+               document.getElementById('reward').innerHTML=obj.words+str2;
+            }
+            else if (a<180) {
+               var str2 = "恭喜您获得4点积分，您的中奖号码是：";
+               document.getElementById('reward').innerHTML=obj.words+str2+obj.secret_id;
+            }
+            else if (a<210) {
+               var str2 = "太可惜了！再来一次？";
+               document.getElementById('reward').innerHTML=obj.words+str2;
+            }
+            else if (a<240) {
+               var str2 = "太可惜了！再来一次？";
+               document.getElementById('reward').innerHTML=obj.words+str2;
+            }
+            else if (a<270) {
+               var str2 = "恭喜您获得1点积分，您的中奖号码是：";
+               document.getElementById('reward').innerHTML=obj.words+str2+obj.secret_id;
+            } 
+            else if (a<300) {
+               var str2 = "太可惜了！再来一次？";
+               document.getElementById('reward').innerHTML=obj.words+str2;
+            }  
+            else if (a<330) {
+               var str2 = "恭喜您获得1点积分，您的中奖号码是：";
+               document.getElementById('reward').innerHTML=obj.words+str2+obj.secret_id;
+            }
+            else if (a<360) {
+               var str2 = "太可惜了！再来一次？";
+               document.getElementById('reward').innerHTML=obj.words+str2;
+            }
+            },4000);         
+
+}
+}
+
+  var data = "id="+b+"&openid="+pValue;
+  xmlHttp.open("POST", "testJson.php", true);
+  xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); 
+  xmlHttp.send(data);
+		}
+		}
+	});
+});
+</script>
+
+</head>
+<body>
+<div class="msg"><h1>玉医青年大转盘</h1></div>
+<div><h3 align='center'>敬告：每2分一次</h3></div>
+
+   <div class="demo">
+        <div id="disk"><img src="disk.png"></div>
+        <div id="start"><img src="start.png" id="startbtn"></div>
+   </div>
+    <div>
+  <p id ="reward">中奖显示区</p>
+  <hr>
+  <h3>注：发送“大转盘+密码”进行兑换。遗忘了兑换号码，请发送“我的历史”查看。</h3>
+  </div>
+</body>

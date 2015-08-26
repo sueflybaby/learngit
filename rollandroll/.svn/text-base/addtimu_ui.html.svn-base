@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>增加题目</title>
+<meta http-equiv="Content-language" content="utf8">
+<meta name="author" content="苏维杰" />
+</head>
+<body>
+<p>提交您输入的题干和答案（以a\b\c\d\e录入）：</p>
+<form name="input" action="addtimu.php" method="get"> 
+  <p>题干:</p>
+  <br/>
+  <textarea name="timu" rows="10" cols="14"></textarea>
+  <br/>
+  <p>答案:</p>
+  <input type="text" name="daan" size="1" />
+  <br/>
+  <input type="submit" value="添加" />
+  </form>
+</body>
+</html>

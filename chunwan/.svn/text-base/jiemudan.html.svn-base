@@ -1,0 +1,106 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>微信最喜爱节目评选页面</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta charset="utf-8">
+        <style type="text/css">
+        body{
+            background-color: rgba(255,0,18,0.92);
+            color: #f8e414;
+            text-shadow: 1px 2px 1px black;
+        }
+        .admin{
+	        margin-left: 50%;
+        }
+        .personal_cen{
+            text-align: justify;
+            width: 250px;
+            border: 1px dashed white;
+            margin-left: -135px;
+            padding: 10px;
+        }
+        .copyright{
+        	
+	        font-size: 12px;
+	        color: #ffffff;
+	        text-align: center;
+        }
+        .beizhu{
+	        color: white;
+	        font-size: 13px;
+        }
+        .button_submit{
+	        text-align: center;
+        }
+        p{
+	        text-align: justify;
+        }
+
+        </style>	
+
+    </head> 
+    <body> 
+
+                <h2 align="center">玉环县人民医院2014年春节联欢晚会</h2>
+                <h3 align="center">节目单</h3>
+                <div class="admin">
+            <div class="personal_cen">
+
+                <ol>
+                <li>
+	                <p>领导班子：医者心声</p>
+                </li>
+                <li>
+					<p>第一工会：家和万事兴<br>
+                </li>
+                <li>
+					<p>嘉&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp宾：日月凌空</p>
+                </li>
+                <li>
+					<p>第六工会：如此广告<br>
+                </li>
+                <li>
+					<p>第四工会：好心分手<br>
+                </li>
+                <li>
+					<p>团&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp委：欢快的跳吧<br>
+                </li>
+				<li>
+					<p>第七工会：后来<br>
+				</li>
+                  <li>
+					<p>嘉&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp宾：盘妻索妻<br>
+				</li>
+				<li>
+					<p>第五工会：我为玉医多多做贡献<br>
+				</li>
+				<li>
+					<p>嘉&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp宾：雪山春晓</p>
+				</li>
+				<li>
+					<p>第三工会：产房门前<br>
+				</li>
+				<li>
+					<p>嘉&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp宾：精忠报国</p>
+				</li>
+				<li>
+					<p>第二工会：年年有余<br>
+				</li>
+				<li>
+					<p>第八工会：明天会更好<br>
+				</li>
+                </ol>
+					
+				
+					
+
+                       </div>
+            
+               </div>
+               
+               <p class="copyright">玉医青年·团委</p>   
+    </body>
+</html>

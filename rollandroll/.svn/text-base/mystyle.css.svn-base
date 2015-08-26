@@ -1,0 +1,36 @@
+<style type="text/css">
+div {
+	width: auto;
+}
+body {
+	margin: 0px;
+	padding: 10px;
+	width: auto;
+	background-image: url(back.jpg);
+	color: #eecd13;
+}
+h1,h6{
+
+	text-align: center;
+color:#eecd13; 
+text-shadow: 
+1px 1px 0 #f1e1e1, 
+2px 2px 0 #f1e1e1, /* end of 2 level deep grey shadow */ 
+3px 3px 0 #444, 
+4px 4px 0 #444, 
+5px 5px 0 #444; 
+}
+p{
+
+	text-align: center;
+color:#eecd13; 
+text-shadow: 
+1px 1px 0 red, 
+2px 2px 0 #f1e1e1, /* end of 2 level deep grey shadow */ 
+2px 2px 0 #444;
+}
+.demo{width:300px; height:300px; position:relative; margin:50px auto}
+#disk{width:300px; height:300px; }
+#start{width:300px; height:300px; position:absolute; top:0px; left:0px;}
+#start img{cursor:pointer}
+</style>

@@ -1,0 +1,163 @@
+<style type="text/css">
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+      }
+      body {
+        background-color: transparent;
+        -webkit-transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        -webkit-transform-style: preserve-3d;
+      }
+      .gwd-div-k4ur {
+        position: absolute;
+        height: 100px;
+        font-family:'Times New Roman';
+        text-align: left;
+        background-image: none;
+        background-color: rgb(27, 147, 192);
+        top: 10px;
+        left: 2%;
+        width: 96%;
+      }
+      .gwd-div-u101 {
+        position: absolute;
+        
+        height: auto;
+        font-family:'Times New Roman';
+        text-align: left;
+        background-image: none;
+        background-color: rgb(27, 147, 192);
+        left: 2%;
+        top: 115px;
+        width:67%
+        
+      }
+      .gwd-div-km6q {
+        position: absolute;
+        width: 28%;
+        height: 188px;
+        font-family:'Times New Roman';
+        text-align: left;
+        background-image: none;
+        background-color: rgb(27, 147, 192);
+        left: 70%;
+        top:115px;
+        padding-top: 20%;
+        color: white;
+      }
+      .name{
+      	width:100%;
+        height:10%;
+        float: left;
+        text-align:right;
+        padding-top: 5px;
+        color: #f21818;
+        }
+        .name a{
+	        color: red;
+	        font-weight: 900;
+        }
+      .jifen{
+        width:100%;
+        height:90%;
+        float: left;
+        padding-top: 5px;
+        color: white;
+        font-size: 13px;
+            }
+	    .history{
+	        font-size: larger;
+	        font-weight: 900;
+	        color: white;
+	        text-align: center;
+
+	    }
+       #endpart{
+		width:100%;
+		position: fixed;
+		bottom: 0;
+		line-height:20px;
+		color:#bababa;
+		text-align:center;
+		height: 25px;
+		font-size:14px;
+		border-top:1px dashed #CCC;
+	
+		background: red;
+}
+img {
+	width:65px;height:42px;float:left;margin:0 10px 0 0; display:inline;overflow:hidden;border-radius: 3px;
+
+}
+.seperate{
+	clear: both;
+
+}
+ol, ul {
+	list-style: none outside none;
+	margin:0;
+	padding: 0;
+}
+a {
+	color:#1d2cf3;
+	text-decoration: none;
+}
+#todayList {
+	display: block; margin: 0 auto;
+}
+.todayList li {
+	display: block;
+	color: #222222;
+	vertical-align: middle;
+	font-weight: bold;
+	/*text-shadow: 0 1px 0 #FFFFFF;*/
+	text-decoration: none;
+	background:rgb(27, 147, 192);
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	-ms-user-select:none;
+	position: relative;
+	/*padding:10px 8px;*/overflow:hidden;
+	box-shadow: 0 1px 0 0 rgba(255,255,255,1) inset;
+
+}
+.todayList li a{
+	padding:10px 40px 9px 8px; display: block;
+}
+.todayList li.only4 a{
+	padding:10px 40px 9px 8px; display: block;
+}
+.todayList li .img {
+	width:65px;height:42px;float:left;margin:0 10px 0 0; display:inline;overflow:hidden;border-radius: 3px;
+}
+.todayList li img {
+	width:75px;float:left;
+}
+.todayList li:hover {
+	background-color:#eeeeee;
+	font-weight:bold;
+	cursor:pointer;
+	text-decoration:none;
+}
+.todayList li:active {
+	background-color:#eeeeee;
+	font-weight:bold;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+.todayList li h2 {
+	font-size: 16px;
+	color:#2f2f2f;
+	font-weight:normal;
+	height:20px;font-weight:normal;line-height:16px;padding:0;
+max-width:100%;text-overflow:ellipsis;white-space:nowrap !important;white-space:normal;overflow:hidden;
+}
+.shop_item {
+	text-align: right;
+	padding-top: 10px;
+	color: white;
+	
+}
+</style>

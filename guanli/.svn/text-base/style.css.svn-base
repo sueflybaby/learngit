@@ -1,0 +1,32 @@
+
+        body{
+            background-color: #f9f5d7;
+            padding: 0;
+            margin: 0px;
+        }
+        a:link {
+        	color: white; 
+        	text-decoration:none;
+        	font-size: x-large;
+        }
+
+       #endpart{
+			width:100%;
+			position: fixed;
+			bottom: 0;
+			line-height:20px;
+			color:#bababa;
+			text-align:center;
+			height: 25px;
+			font-size:14px;
+			border-top:1px dashed #CCC;
+			background: red;
+		}
+		#part{
+			margin-left: 10%;
+			margin-top: 10%;
+			width:80%;height:100px;border-radius: 10px;
+			background-color: #a0e09a;
+			text-align: center;
+		}
+
