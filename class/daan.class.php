@@ -34,7 +34,7 @@ class Daan
 			$chaxunjifen = mysql_fetch_array(mysql_query("select * from jifen where user like '%$fromUsername%'"));
 			$updata_chisu = mysql_query("UPDATE chisu SET data='$chisu_result' WHERE user like '%$fromUsername%'");//更新次数
 
-			$numberOfDayOfMonth = "d".date("j");//当前为当月的天数，dx d1 d2 d3
+			$numberOfDayOfMonth = "z".strval(date("j"));//当前为当月的天数，dx d1 d2 d3
 			if($chisu_result > 2){
             	$contentStr = "您好，今天次数已满！明天别忘了哦。";
             	return $contentStr;
@@ -42,16 +42,17 @@ class Daan
 				$jifen_result =$chaxunjifen['score']+1;//若正确则正积分累计一分
               	$updata_jifen = mysql_query("UPDATE jifen SET score='$jifen_result' WHERE user like '%$fromUsername%'");//更新次数
                 //更新everydayOfMonthCheck积分
-               
-                mysql_query("UPDATE everydayOfMonthCheck SET '$numberOfDayOfMonth' = '1' WHERE openid like '%$fromUsername%'");//为空则自动插
+				$this->updateDateOfMonthCheck($fromUsername,$numberOfDayOfMonth,"1");
+                //mysql_query("UPDATE everydayOfMonthCheck SET '$numberOfDayOfMonth' = '1' WHERE openid like '%$fromUsername%'");//为空则自动插
 
-            	$contentStr = "答对了，亲！真厉害，感谢青们的不离不弃！《玉医小店》货品定期更新哦。";
+            	$contentStr = "答对了，亲！感谢青们的不离不弃！《玉医小店》货品定期更新哦。";
             	return $contentStr;
 
             }elseif(($chisu_result <=2) && ($huida != $abc)){
             	$wrong_result = $chaxunjifen['wrong']+1;//若错误则错误记录累计一次
               	mysql_query("UPDATE jifen SET wrong='$wrong_result' WHERE user like '%$fromUsername%'");//更新错误次数
-                mysql_query("UPDATE everydayOfMonthCheck SET '$numberOfDayOfMonth' = '2' WHERE openid like '%$fromUsername%'");//为空则自动插
+				$this->updateDateOfMonthCheck($fromUsername,$numberOfDayOfMonth,"2");
+               // mysql_query("UPDATE everydayOfMonthCheck SET '$numberOfDayOfMonth' = '2' WHERE openid like '%$fromUsername%'");//为空则自动插
                 $contentStr = "答错了亲，明天继续努力哟！"."正确答案是：".strtoupper($huida)."。\n若您发现有答案错误,请告知我们！"; 
                 return $contentStr; 
   			}
@@ -59,5 +60,15 @@ class Daan
 			return "答案为空，类似格式“答案A”（不含引号）。";
 		}
 }
+	public function updateDateOfMonthCheck($fromUsername,$numberOfDayOfMonth,$score){
+		$chaxun =mysql_fetch_array(mysql_query("select * from everydayOfMonthCheck where openid like '%$fromUsername%'"));
+		if($chaxun){
+			mysql_query("UPDATE everydayOfMonthCheck SET $numberOfDayOfMonth = '$score' WHERE openid like '%$fromUsername%'");//为空则自动插
+		}else{
+			mysql_query("INSERT INTO everydayOfMonthCheck SET $numberOfDayOfMonth = '$score',openid='$fromUsername'");
+		}
+
+	}
+
 }
 ?>

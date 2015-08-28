@@ -49,11 +49,11 @@ if(!empty($_GET['openid'])) {
 $get_jifen = mysql_fetch_row(mysql_query("select * from jifen where user like '%$openid%' limit 1"));
 //var_dump($get_jifen);
 //积分尚未修改
-$jifen_score = $get_jifen[1]+$get_jifen[4]+$get_jifen[6]-$get_jifen[5];
+$jifen_score = $get_jifen[1]+$get_jifen[4]+$get_jifen[6]+$get_jifen[7]-$get_jifen[5];
 $jife_usedscore = $get_jifen[5];
 
 if (!empty($get_jifen)) {
-	echo "您目前的积分为:".$jifen_score."分<br>您在【每日一答】中获得:".$get_jifen[1]."分。<br>参与【活动】获得了:           ".$get_jifen[4]."分。<br>参与【每周读片】获得了:".$get_jifen[6]."分。<br>您已【使用】:".$jife_usedscore."分。";//您目前的积分为：80 已使用积分：0
+	echo "您目前的积分为:".$jifen_score."分<br>您在【每日一答】中获得:".$get_jifen[1]."分。<br>参与【活动】获得了: ".$get_jifen[4]."分。<br>参与【每周读片】获得了:".$get_jifen[6]."分。<br>每月签到答题额外获得了:".$get_jifen[7]."分。<br>您已【使用】:".$jife_usedscore."分。";//您目前的积分为：80 已使用积分：0
 }else{
 	echo "您尚未获得积分";
 }
