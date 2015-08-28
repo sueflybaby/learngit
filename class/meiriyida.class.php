@@ -8,6 +8,7 @@ class Meiriyida
     public function responseMsg($username) 
     { 
 		$extraScore = 10;//连续答对获得10分
+		$fromUsername = $username; 
 		
 		include_once("conn.php");//导入连接文件
  
@@ -63,7 +64,19 @@ class Meiriyida
 			mysql_query("TRUNCATE TABLE everydayOfMonthCheck");
 		}
 		
-		
+		//进行每月的判断 是否为本月的第一天！
+		if (date("j")=="1") {
+			$chaxunMonthScore = mysql_fetch_array(mysql_query("select * from everyMonthRecord where user like '%$fromUsername%'"));
+			if (!empty($chaxunMonthScore)) {//非空
+				if ($chaxunMonthScore["weida"]) {
+					$strReturn = "恭喜您，在".$currentMonth."月份全部参与答题并答对了，获得".$extraScore."积分！\n";
+				}else{
+					$strReturn = "很遗憾，在".$currentMonth."月份全部参与了".($dui+$cuo)."天，答对".$dui."天，无法获得奖励积分！\n";
+				}
+			}else{
+				$strReturn = "您尚未参与答题！\n";
+			}
+		}
 		
 		//匹配day表格获取存储的日期参数
 		$day_clear = mysql_fetch_array(mysql_query("select * from day where user like 'day'"));
@@ -73,7 +86,7 @@ class Meiriyida
 		    $clear_chisu =  mysql_query("TRUNCATE TABLE chisu");
 		}           
 		//题库的操作 答题的操作＃＃＃＃＃＃＃
-    $fromUsername = $username; 
+    
     $time = time();       
           //查询次数及积分，如果均为空则在数据库中初始化                
 	$chaxunchisu = mysql_fetch_array(mysql_query("select * from chisu where user like '%$fromUsername%'"));
@@ -95,7 +108,7 @@ class Meiriyida
 			$updata_chisu = mysql_query("UPDATE chisu SET data='$chisu_result',timuid = '$row[0]' WHERE user like '%$fromUsername%'");
 		}
 		//题库的操作 答题的操作＃＃＃＃＃＃＃＃
-    $resultStr = "请听题：\n".$row['timu']."\n【回复“答案+选项”例如“答案A”获取答案，每天最多1个积分，回答错误不加分！重复获取题目视为答题！】";
+    $resultStr = $strReturn."请听题：\n".$row['timu']."\n【回复“答案+选项”例如“答案A”获取答案，每天最多1个积分，回答错误不加分！重复获取题目视为答题！】";
     return $resultStr; 
 
 
