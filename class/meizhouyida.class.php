@@ -27,7 +27,7 @@ class MeiZhouYiDa
 			}
 
 		}else{
-			return "您的选项不能为空。";
+			return "每周读片已经暂停。";//并无此选项
 		}
 }
 }
