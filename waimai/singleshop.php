@@ -3,7 +3,7 @@ require_once("conn.php");
 $name = $_GET["name"];//传递店面
 $name =urldecode($name);//纠正编码，中文可以显示。
 $get_data =mysql_query("select * from waimai where name like '{$name}'");//查询
-
+$val =  mysql_fetch_array($get_data);//编列列表
 echo "<title>".$val['name']." 号码由玉环县人民医院团委提供</title>";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -53,7 +53,6 @@ padding:8px;text-align:center;font-size:14px;color:#666;
  <div id="main">
 
 <?php
-$val =  mysql_fetch_array($get_data);//编列列表
 //传递店面名，name
 echo('
 <div id="subview">
