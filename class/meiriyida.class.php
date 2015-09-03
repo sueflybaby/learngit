@@ -74,7 +74,7 @@ class Meiriyida
 			$chaxunMonthScore = mysql_fetch_array(mysql_query("select * from everyMonthRecord where openid like '%$fromUsername%' AND yuefeng='$lastMonth'"));
 			if (!empty($chaxunMonthScore)) {//非空
 				if (!$chaxunMonthScore["weida"]) {
-					$strReturn = "恭喜您，在".$lastMonth."月份全部参与答题并答对了，获得".$extraScore."积分！\n";
+					$strReturn = "恭喜您，在".$lastMonth."月份全部参与答题，获得".$extraScore."积分！\n";
 				}else{
 					$strReturn = "很遗憾，在".$lastMonth."月份全部参与了".($chaxunMonthScore["dui"]+$chaxunMonthScore["cuo"])."天，答对".$chaxunMonthScore["dui"]."天，无法获得奖励积分！\n";
 				}
