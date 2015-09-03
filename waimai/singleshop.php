@@ -1,8 +1,16 @@
+<?php
+require_once("conn.php");
+$name = $_GET["name"];//传递店面
+$name =urldecode($name);//纠正编码，中文可以显示。
+$get_data =mysql_query("select * from waimai where name like '{$name}'");//查询
+
+echo "<title>".$val['name']." 号码由玉环县人民医院团委提供</title>";
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>玉医青年外卖查询</title>
+
 <base href="http://yyqn.sinaapp.com/waimai/" />
 <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0;">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -45,11 +53,7 @@ padding:8px;text-align:center;font-size:14px;color:#666;
  <div id="main">
 
 <?php
-require_once("conn.php");
-$name = $_GET["name"];//传递店面
-$name =urldecode($name);//纠正编码，中文可以显示。
-$get_data =mysql_query("select * from waimai where name like '{$name}'");//查询
-while ($val =  mysql_fetch_array($get_data)){//编列列表
+$val =  mysql_fetch_array($get_data);//编列列表
 //传递店面名，name
 echo('
 <div id="subview">
@@ -65,7 +69,7 @@ echo('
 <div><img src="'.existpic($val['picture02']).'" onload="if(this.width>320){this.width=320}" ></div>
 </div>
 		');
-}
+
 function exist($a){ //判断是否提供了内容
 	if(!empty($a)){
 		return $a;
