@@ -1,3 +1,17 @@
+<!DOCTYPE html manifest="/m.manifest">
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>商店发布</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.copyright{
+  text-align:center;font-size:12px;color:#666;
+}
+</style>
+</head>
+<body>
 <?php
 //session_start();
 //include_once('saestorage.class.php');
@@ -29,12 +43,14 @@ $shop_picture = trim($_POST['picture01']);//照片1
 $shop_picture02 = trim($_POST['picture02']);//照片2
 
 //$shop_ord = intval(trim($_POST['ord']));//顺序排列
-$shop_ord = intval(default_post($_POST['ord'], 'ord'));//顺序排列
+$shop_ord = default_post($_POST['order'], 'ord');//顺序排列
+
+//var_dump($_POST);
 
 require_once("conn.php");
 //$update_str = "UPDATE waimai SET author='$shop_author',class='$shop_class', name='$shop_name',address='$shop_address',telephone='$shop_telephone',note='$shop_note',picture='$shop_picture',picture02='$shop_picture02', ord=$shop_ord";
-$insert_str = "INSERT INTO waimai SET (author,class,name,address,telephone,note,picture,picture02,ord) VALUES($shop_author,$shop_class, $shop_name,$shop_address,$shop_telephone,$shop_note,$shop_picture,$shop_picture02, $shop_ord)";
-
+$insert_str = "INSERT INTO waimai (`id`, `author`, `class`, `name`, `address`, `telephone`, `note`, `picture`, `picture02`, `ord`) VALUES(NULL,'$shop_author','$shop_class','$shop_name','$shop_address','$shop_telephone','$shop_note','$shop_picture','$shop_picture02', '$shop_ord')";
+echo $insert_str;
 $did_insert = mysql_query($insert_str);
 
 if ($did_insert) {
@@ -46,3 +62,5 @@ if ($did_insert) {
 
 
 ?>
+</body>
+</html>
