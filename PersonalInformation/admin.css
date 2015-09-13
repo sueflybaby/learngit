@@ -1,0 +1,28 @@
+<style>
+#uncheck{
+    color: blue;
+}
+#checked{
+	color: green;
+}
+
+.datalist{  
+    border:1px solid #0058a3;   /* 表格边框 */  
+    font-family:Arial;  
+    border-collapse:collapse;   /* 边框重叠 */  
+    background-color:#eaf5ff;   /* 表格背景色 */  
+    font-size:14px;  
+    text-align: center;
+}  
+
+
+.datalist td{  
+    border:1px solid #0058a3;   /* 单元格边框 */  
+    padding-top:4px; padding-bottom:4px;  
+    padding-left:10px; padding-right:10px;  
+}  
+.datalist tr.altrow{  
+    background-color:#c7e5ff;   /* 隔行变色 */  
+}  
+-->   
+</style>
