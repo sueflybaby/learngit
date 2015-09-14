@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="Description" content="登入页面" />
+    <meta name="Keywords" content="登入" />
+    <link href="login.css" rel="stylesheet" type="text/css" media="all" />
+    <title>登录</title>
+</head>
+<body>
+<div id="opi" class="page-wrapper clearfix">
+    <div class="full-page-holder">
+        <div class="full-page">
+
+            <div class="login-page clearfix">
+                <div class="full-login">
+                    <div class="shadow">
+                        <div class="login-panel">
+                            <form method="post" id="loginForm" action="login.php" focus="email">
+                                <h2>登录网站</h2>
+                                <p class="clearfix">
+                                    <label for="email">帐号:</label>
+
+                                    <input type="text" name="name" tabindex="1" value="" id="email" class="input-text">
+
+                                </p><p class="clearfix">
+                                <label for="password">密码:</label>
+                                <input type="password" id="password" name="secret" class="input-text" tabindex="2" />
+                            </p>
+                                <p class="right"><span class="float-right"><a tabindex="5" href='#'>取回密码</a></span>
+                                </p>
+                                <p class="right">
+                                    <input type="hidden" name="uuid" value="" />
+                                    <input type="hidden" name="isplogin" value="true" />
+                                    <input type="submit" id="login" tabindex="4" name="submit" class="input-submit large" value="登录" />
+                                </p>
+                                <div class="separator"></div>
+                                <p class="no-account">巨石工作室</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

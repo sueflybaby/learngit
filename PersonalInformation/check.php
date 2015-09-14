@@ -13,7 +13,7 @@
 	//echo("<br>");
 	//var_dump($_GET);//$_GET["id"] $_GET["value"]
 	
-	$sql_update = "UPDATE PersonalInformation_Records SET `check` = '{$_GET['value']}' WHERE `id` = {$_GET["id"]}";
+	$sql_update = "UPDATE personalinformation_records SET `check` = '{$_GET['value']}' WHERE `id` = {$_GET["id"]}";
 	
 	include_once("conn.php");
 

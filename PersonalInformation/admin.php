@@ -36,10 +36,40 @@ require_once('conn.php');
 
 //define openid
 //getdata for person
-$sql = "SELECT * FROM PersonalInformation_Records ORDER BY id DESC";
+$sql = "SELECT * FROM personalinformation_records ORDER BY id DESC";
 
 //echo the result
-echo "<table border='1' align='center' class='datalist'>
+
+echo "<table border='1' align='center' class='datalist'>";
+$num=0;
+
+$query_sql = $mysqli->query($sql);
+$numoflist =$query_sql->num_rows;
+//$get_data =mysql_query("select * from waimai where class='{$class}' ORDER BY ord DESC");//查询
+if($numoflist<=10){	//如果总数小于等于10则全部生成
+ // makeList($get_data);
+}else{//总数大于10则分页
+  if(!isset($_GET['limit'])){$limitHead =0;}else{ $limitHead=$_GET['limit'];};//如果没有传递参数 那么初始化为0
+  $limitEnd = $limitHead +10;
+  if($limitEnd>=$numoflist){$limitEnd=$numoflist;$limitEndmore=$limitHead;}else{$limitEndmore = $limitEnd;}//若大于总数则归为总数,再传递值仍然为前10位,否则下一页值加1（无限循环末尾）
+  $limitEndless = $limitEndmore-11;
+  if($limitEndless<0){$limitEndless=0;}//如果上一页的初始化值小于0则归为0
+  $sql ="select * from personalinformation_records ORDER BY id DESC limit $limitHead,$limitEnd";//查询
+  //makeList($get_data_limit);
+  if($limitHead!==0){
+    echo('<td colspan="7" class="only4-left">
+<a href="admin.php?limit='.$limitEndless.'"><h2>上一页</h2></a>
+</td>
+');
+  }
+  if($limitEnd!==$numoflist){
+    echo('
+<td colspan="7" class="only4-left">
+<a href="admin.php?limit='.$limitEndmore.'"><h2>下一页</h2></a>
+</li></td>');
+  }
+}
+echo "
 
 <tr>
 <th>ID</th>
@@ -50,24 +80,26 @@ echo "<table border='1' align='center' class='datalist'>
 <th>学位</th>
 <th>职称</th>
 <th>职务</th>
-<th>科室</th>
+<th>专科</th>
 <th>擅长</th>
-<th>简历</th>
+<th>个人简历</th>
+<th>研究方向</th>
+<th>医疗成果</th>
 <th>状态</th>
 
 </tr>";
 
-$num=0;
 $query_sql = $mysqli->query($sql);
+
 while ($row = $query_sql->fetch_assoc()) {
   
   $num +=1;
- 	 if ($num%2==0)
- 	 {
+  if ($num%2==0){
      echo "<tr align='center'>";
-   }else{
+  }else{
      echo "<tr align='center' class='altrow'>";
-   }
+  }
+
   echo "
   <form name='input' action='check.php' target='_self' method='get'>";
   echo "<td>" . $num . "</td>";
@@ -81,6 +113,9 @@ while ($row = $query_sql->fetch_assoc()) {
   echo "<td>" . $row['office'] . "</td>";
   echo "<td>" . $row['profession'] . "</td>";
   echo "<td>" . $row['resume'] . "</td>";
+  echo "<td>" . $row['study'] . "</td>";
+  echo "<td>" . $row['medical'] . "</td>";
+
   echo "<input type='text' name='id' hidden='true' value='{$row['id']}'/>";
   if ($row['check']=="checked")
   {
@@ -88,7 +123,7 @@ while ($row = $query_sql->fetch_assoc()) {
 
     echo "<input type='text' name='value' hidden='true' value='uncheck' />";
   }else if($row['check']=="tuihui"){
-    echo "<td>" . "<input type='submit' id='checked' value='撤销退回'/>"  . "</td>";
+    echo "<td>" . "<input type='submit' id='checked' style='color:red;' value='撤销退回'/>"  . "</td>";
     echo "<input type='text' name='value' hidden='true' value='uncheck' />";
   }else{
 	  echo "<td>" . "<input type='submit' id='uncheck' value='未审核'/>"  . "</td>";
@@ -97,13 +132,14 @@ while ($row = $query_sql->fetch_assoc()) {
     echo "
   <form name='input' action='check.php' target='_self' method='get'>";
     echo "<input type='text' name='id' hidden='true' value='{$row['id']}'/>";
-    echo "<td>" . "<input type='submit' id='uncheck' value='退回'/>"  . "</td>";
+    echo "<td>" . "<input type='submit' id='uncheck' style='color:red;'value='退回'/>"  . "</td>";
     echo "<input type='text' name='value' hidden='true' value='tuihui' />";
 	}
   
   echo "</form>";
   echo "</tr>";
 }
+
 $query_sql->free();
 $mysqli->close();
 

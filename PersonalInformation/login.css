@@ -88,6 +88,7 @@ select,label,textarea,input{font-family:'lucida grande',tahoma,verdana,arial,STH
 .input-text{border:1px solid #bdc7d8;padding:3px;*behavior:expression(function(ele){ele.style.behavior='none';if(ele.disabled)ele.style.backgroundColor='#D4D0C8'}(this))}
 .input-text-name{width:100px;border:1px solid #bdc7d8;padding:3px;*behavior:expression(function(ele){ele.style.behavior='none';if(ele.disabled)ele.style.backgroundColor='#D4D0C8'}(this))}
 .input-text-telephone{width:150px;border:1px solid #bdc7d8;padding:3px;*behavior:expression(function(ele){ele.style.behavior='none';if(ele.disabled)ele.style.backgroundColor='#D4D0C8'}(this))}
+.input-text-duty{width:100px;border:1px solid #bdc7d8;padding:3px;*behavior:expression(function(ele){ele.style.behavior='none';if(ele.disabled)ele.style.backgroundColor='#D4D0C8'}(this))}
 
 .input-text[disabled]{background-color:#D4D0C8}
 .input-checkbox{margin-right:5px}
@@ -141,7 +142,7 @@ input.large{padding:3px 15px;font-size:14px;_padding:5px 10px 2px}
 .login .search-friends .search-form {float:right;}
 
 /* Full login page */
-.full-login {float:left;width:360px;padding-top:20%;margin-left: -175px;}
+.full-login {float:left;width:500px;padding-top:20%;margin-left: -250px;}
 .full-login .login-panel .inner{border:1px solid #b8d4e8; padding:20px; background-color:#f0f5f8}
 
 .full-login .login-panel h2 {margin-bottom:15px;}
@@ -154,6 +155,8 @@ input.large{padding:3px 15px;font-size:14px;_padding:5px 10px 2px}
 .full-login .login-panel p.no-account {font-size:14px;text-align:center;}
 .full-login .login-panel p.no-account a {width:86px;height: 25px;margin:10px auto 0;outline:0;}
 
+/* coustomize */
+.head_title {width: 1000px;height:30px;margin-left:-500px;padding-left:-500px;font-size:20px;font-weight:bolder;background-color: #FF6600;color: black;text-align: center;vertical-align: middle;}
 
 
 

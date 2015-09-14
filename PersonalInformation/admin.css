@@ -23,6 +23,8 @@
 }  
 .datalist tr.altrow{  
     background-color:#c7e5ff;   /* 隔行变色 */  
-}  
+}
+.only4-left {text-align: center;}
+
 -->   
 </style>

@@ -14,11 +14,11 @@
   //显示详情页面
   //可以修改或者直接提交
 	include("conn.php");
-	$name = "2";// $_POST['id']="2";//for test
+	$name = $_GET['id'];//for test
 	if (empty($name)) {
 		header("longin.php?action=longin");
 	}
-	$sql = "SELECT * FROM PersonalInformation_Records WHERE id like {$name}";
+	$sql = "SELECT * FROM personalinformation_records WHERE id like {$name}";
 	$check = $mysqli->query($sql);
 	if ($check) {
 		$data = $check->fetch_assoc();
@@ -40,11 +40,11 @@
 <p class="clearfix">
 <label for="email">姓名:</label>
 
-<input type="text" name="name" tabindex="1" value="<? echo $data["name"]; ?>" id="email" class="input-text-name">
+<input type="text" name="name" tabindex="1" value="<?php echo $data["name"]; ?>" id="email" class="input-text-name">
 
 </p><p class="clearfix">
 <label for="email">性别:</label>
-<? 
+<?php
 if (intval($data["gender"])) {
 	echo '<input name="gender" type="radio" value="1" checked /> 男 
 <input name="gender" type="radio" value="0" /> 女';
@@ -57,11 +57,11 @@ if (intval($data["gender"])) {
 </p><p class="clearfix">
 <label for="email">电话:</label>
 
-<input type="text" name="telephone" tabindex="1" value="<? echo $data["telephone"]; ?>" id="email" class="input-text-telephone">
+<input type="text" name="telephone" tabindex="1" value="<?php echo $data["telephone"]; ?>" id="email" class="input-text-telephone">
 
 </p><p class="clearfix">
 <label for="email">学历:</label>
-<?
+<?php
 
 switch ($data["educational_background"]) {
   case '中专':
@@ -129,7 +129,7 @@ switch ($data["educational_background"]) {
 
 </p><p class="clearfix">
 <label for="email">学位:</label>
-<?
+<?php
 
 switch ($data["educational_background"]) {
   case '学士':
@@ -166,41 +166,52 @@ switch ($data["educational_background"]) {
 </p><p class="clearfix">
 <label for="email">职称:</label>
 
-<input type="text" name="name" tabindex="1" value="<? echo $data["academic_title"]; ?>" id="email" class="input-text-name">
+<input type="text" name="s2" tabindex="1" value="<?php echo $data["academic_title"]; ?>" id="email" class="input-text-name">
 
   	<br>
 
 </p><p class="clearfix">
 <label for="email">职务:</label>
 
-<input type="text" name="duty" tabindex="1" value="<? echo $data["duty"]; ?>" id="email" class="input-text">
+<input type="text" name="duty" tabindex="1" value="<?php echo $data["duty"]; ?>" id="email" class="input-text">
 
 </p><p class="clearfix">
-<label for="email">科室:</label>
+<label for="email">专科:</label>
 
-<input type="text" name="keshi" tabindex="1" value="<? echo $data["office"]; ?>" id="email" class="input-text">
+<input type="text" name="keshi" tabindex="1" value="<?php echo $data["office"]; ?>" id="email" class="input-text">
 
 </p><p class="clearfix">
 
 <label for="email">擅长:</label>
 
-<input type="text" name="profession" tabindex="1" value="<? echo $data["profession"]; ?>" id="email" class="input-text">
+<input type="text" name="profession" tabindex="1" value="<?php echo $data["profession"]; ?>" id="email" class="input-text">
 
 </p><p class="clearfix">
-<label for="email">简历:</label>
+<label for="email">个人简历:</label>
 
 <textarea rows="8" cols="29" name="jianjie">
-<? echo $data["resume"]; ?>
+<?php echo $data["resume"]; ?>
 </textarea>
 </p><p class="clearfix">
+        <label for="email">研究方向:</label>
 
+<textarea rows="8" cols="29" name="jianjie">
+<?php echo $data["study"]; ?>
+</textarea>
+    </p><p class="clearfix">
+        <label for="email">医疗成果:</label>
+
+<textarea rows="8" cols="29" name="jianjie">
+<?php echo $data["medical"]; ?>
+</textarea>
+    </p><p class="clearfix">
 </p>
 <p class="right">
 
 <input type="hidden" name="origURL" value="#" /><input type="hidden" name="domain" value="" />
-<input type="hidden" name="formName" value="" /><input type="hidden" name="method" value="" />
+<input type="hidden" name="from" value="fromItem" /><input type="hidden" name="method" value="" />
 <input type="hidden" name="isplogin" value="true" />
-<input type="submit" id="login" tabindex="4" name="submit" class="input-submit large" value="提交" /></p>
+<input type="submit" id="login" tabindex="4" name="submit" class="input-submit large" value="审核" /></p>
 <a href="admin.php"><input type="buttun" tabindex="5" class="input-submit" value="返回" /></a>
 </p>
 <div class="separator"></div>
