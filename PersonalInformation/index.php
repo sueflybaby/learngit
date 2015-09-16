@@ -8,7 +8,7 @@ if(!(isset($_COOKIE['name']) && $_COOKIE['islogin'] == '1')){
     $check_pingwei = "SELECT * FROM `personalinformation_users` WHERE `user` like '%".$_COOKIE['name']."%'";
     $result_check= $mysqli->query($check_pingwei);
     //var_dump($result_check);
-    if ($result_check->num_rows = 0) {
+    if (!$result_check->num_rows) {
         header("location:login.php");
         exit();
     }

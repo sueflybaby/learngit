@@ -54,7 +54,7 @@ if(isset($name)>0){
 		$guid = guid();
 	}
 //echo $guid;
-			if ($data_uuid["secret"]=$secret)
+			if ($data_uuid["secret"]==$secret)
 			{
 				//echo "111";
 			    setcookie('name',$name,time()+60*60*1);
@@ -63,7 +63,10 @@ if(isset($name)>0){
 				header("location:index.php?name={$name}&uuid={$guid}");
 				exit();
 			}else{
-                exit();
+				echo '<script language="javascript">
+   					 alert("用户名或者密码错误！");
+    				 window.location.href="login.html?action=longin";
+			</script>';
             }
 		
 	
