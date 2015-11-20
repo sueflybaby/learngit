@@ -1,45 +1,64 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<meta name="Description" content="登入页面" />
-<meta name="Keywords" content="登入" />
-<link href="login.css" rel="stylesheet" type="text/css" media="all" />
-<title>登录</title>
-</head>
-<body>
-<select size="1" id="select" name="keshi">
-        <option selected="true" value="volvo">内一</option>
-        <option value="volvo">内二</option>
-        <option value="volvo">内三</option>
-        <option value="volvo">内科门诊</option>
-        <option value="volvo">外一</option>
-        <option value="volvo">外二</option>
-        <option value="volvo">神经外科</option>
-        <option value="volvo">骨科</option>
-        <option value="volvo">妇科</option>
-        <option value="volvo">儿科</option>
-        <option value="volvo">ICU</option>
-        <option value="volvo">感染科</option>
-        <option value="volvo">体检中心</option>
-        <option value="volvo">急诊</option>
-        <option value="volvo">血透室</option>
-        <option value="volvo">皮肤科</option>
-        <option value="volvo">病理科</option>
-        <option value="volvo">口腔科</option>
-        <option value="volvo">耳鼻咽喉科</option>
-        <option value="volvo">眼科</option>
-        <option value="volvo">中医科</option>
-        <option value="volvo">针灸推拿科</option>
-        <option value="volvo">康复科</option>
-        <option value="volvo">西药房</option>
-        <option value="volvo">中药房</option>
-        <option value="volvo">B超室</option>
-        <option value="volvo">放射科</option>
-        <option value="volvo">检验科</option>
-        <option value="volvo">麻醉科</option>
-        <option value="volvo">手术室</option>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="Description" content="登入页面" />
+    <meta name="Keywords" content="登入" />
+    <link href="login.css" rel="stylesheet" type="text/css" media="all" />
+    <title>个人信息录入</title>
+    <script src='jquery-1.11.1.min.js'>
+    </script>
+    <script>
 
-</select>
+        $(document).ready(function(){
+            var txt0 = "<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就读于<input type='text' name='jianli[]' value='' size='8' />学校，获得<input type='text' name='jianli[]' value='' size='3' />学位。<p></p>";
+            var txt1 = "<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就职于<input type='text' name='jianli[]' value='' size='8' />医院，<input type='text' name='jianli[]' value='' size='3' />科室。<p></p>";
+            var txt2 = "<input type='text' name='lunwen[]' value='' size='3' />年，在《<input type='text' name='lunwen[]' value='' size='10'/>》杂志，第<input type='text' name='lunwen[]' value='' size='1' />期发表论文《<input type='text' name='lunwen[]' value=''  size='20'/>》。<p></p>";
+            var txt3 = "<input type='text' name='huojiang[]' value='' size='3' />年，荣获《<input type='text' name='huojiang[]' value='' size='10'/>》。<p></p>";
+            $('#btn0').click(function(){
+
+                $(this).before(txt0);
+            });
+            $('#btn1').click(function(){
+
+                $(this).before(txt1);
+            });
+            $('#btn2').click(function(){
+
+                $(this).before(txt2);
+            });
+            $('#btn3').click(function(){
+
+                $(this).before(txt3);
+            });
+        });
+    </script>
+</head>
+
+<body>
+<ol>
+    <li>
+        <input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就读于<input type='text' name='jianli[]' value='' size='8' />学校，获得<input type='text' name='jianli[]' value='' size='3' />学位。
+    </li>
+    <button id='btn0'>增加一行</button>
+    <li>
+        <input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就职于<input type='text' name='jianli[]' value='' size='8' />医院，<input type='text' name='jianli[]' value='' size='3' />科室。
+    </li>
+    <button id='btn1'>增加一行</button>
+</ol>
+
+<ol>
+    <li>
+        <input type='text' name='lunwen[]' value='' size='3' />年，在《<input type='text' name='lunwen[]' value='' size='10'/>》杂志，第<input type='text' name='lunwen[]' value='' size='1' />期发表论文《<input type='text' name='lunwen[]' value=''  size='20'/>》。
+    </li>
+</ol>
+<button id='btn2'>增加一行</button>
+<label for="email">获奖情况（请填写县级以上荣誉）:</label>
+<ol>
+    <li>
+        <input type='text' name='huojiang[]' value='' size='3' />年，荣获《<input type='text' name='huojiang[]' value='' size='10'/>》。
+    </li>
+</ol>
+<button id='btn3'>增加一行</button>
 </body>
 </html>

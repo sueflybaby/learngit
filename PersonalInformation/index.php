@@ -27,7 +27,39 @@ error_reporting(E_ALL^E_NOTICE^E_WARNING);
 <meta name="Keywords" content="登入" />
 <link href="login.css" rel="stylesheet" type="text/css" media="all" />
 <title>个人信息录入</title>
+    <script src='jquery-1.11.1.min.js'>
+    </script>
+    <script>
+
+        $(document).ready(function(){
+            var txt0 = "<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就读于<input type='text' name='jianli[]' value='' size='8' />学校，获得<input type='text' name='jianli[]' value='' size='3' />学位。<p></p>";
+            var txt1 = "<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就职于<input type='text' name='jianli[]' value='' size='8' />医院，<input type='text' name='jianli[]' value='' size='3' />科室。<p></p>";
+            var txt2 = "<input type='text' name='lunwen[]' value='' size='3' />年，在《<input type='text' name='lunwen[]' value='' size='10'/>》杂志，第<input type='text' name='lunwen[]' value='' size='1' />期发表论文《<input type='text' name='lunwen[]' value=''  size='20'/>》。<p></p>";
+            var txt3 = "<input type='text' name='huojiang[]' value='' size='3' />年，荣获《<input type='text' name='huojiang[]' value='' size='10'/>》。<p></p>";
+            $('#btn0').click(function(){
+
+                $(this).before(txt0);
+            });
+            $('#btn1').click(function(){
+
+                $(this).before(txt1);
+            });
+            $('#btn2').click(function(){
+
+                $(this).before(txt2);
+            });
+            $('#btn3').click(function(){
+
+                $(this).before(txt3);
+            });
+        });
+    </script>
 <script type="text/javascript">
+    /*
+     **弹出弹窗提示
+     */
+    alert("此表涉及的信息将对外公布，请您认真如实的填写。");
+    /*
 /*  
 **    ====================================
 **    类名：CLASS_LIANDONG_YAO  
@@ -314,65 +346,70 @@ switch ($data["educational_background"]) {
 
 <input type="text" name="duty" tabindex="1" value="" id="email" class="input-text-duty">
         <span style="color: crimson;">(*)</span>
-</p><p class="clearfix">
+</p>
+    <p class="clearfix">
 
 <label for="email">专科:</label>
 <select size="1" id="select" name="keshi">
     <option value="放射科">放射科</option>
+    <option value="B超室">B超室</option>
     <option value="检验科">检验科</option>
     <option value="麻醉科">麻醉科</option>
     <option value="手术室">手术室</option>
-        <option value="心血管内科">心血管内科</option>
-        <option value="消化内科">消化内科</option>
+    <option value="心血管内科">心血管内科</option>
+    <option value="消化内科">消化内科</option>
     <option value="神经内科">神经内科</option>
     <option value="呼吸内科">呼吸内科</option>
     <option value="内分泌科">内分泌科</option>
     <option value="重症医学科">重症医学科</option>
-        <option value="普通外科">普通外科</option>
-        <option value="肛肠外科">肛肠外科</option>
-        <option value="泌尿外科">泌尿外科</option>
-        <option value="神经外科">神经外科</option>
-        <option value="骨科">骨科</option>
-        <option value="妇科">妇科</option>
-        <option value="儿科">儿科</option>
-        <option value="ICU">ICU</option>
-        <option value="感染科">感染科</option>
-        <option value="体检中心">体检中心</option>
-        <option value="急诊">急诊</option>
-        <option value="血透室">血透室</option>
-        <option value="皮肤科">皮肤科</option>
-        <option value="病理科">病理科</option>
-        <option value="口腔科">口腔科</option>
-        <option value="耳鼻咽喉科">耳鼻咽喉科</option>
-        <option value="眼科">眼科</option>
-        <option value="中医科">中医科</option>
-        <option value="针灸推拿科">针灸推拿科</option>
-        <option value="康复科">康复科</option>
-        <option value="西药房">西药房</option>
-        <option value="中药房">中药房</option>
-        <option value="B超室">B超室</option>
-
-
+    <option value="普通外科">普通外科</option>
+    <option value="肛肠外科">肛肠外科</option>
+    <option value="泌尿外科">泌尿外科</option>
+    <option value="神经外科">神经外科</option>
+    <option value="骨科">骨科</option>
+    <option value="妇科">妇科</option>
+    <option value="儿科">儿科</option>
+    <option value="ICU">ICU</option>
+    <option value="感染科">感染科</option>
+    <option value="体检中心">体检中心</option>
+    <option value="急诊">急诊</option>
+    <option value="血透室">血透室</option>
+    <option value="皮肤科">皮肤科</option>
+    <option value="病理科">病理科</option>
+    <option value="口腔科">口腔科</option>
+    <option value="耳鼻咽喉科">耳鼻咽喉科</option>
+    <option value="眼科">眼科</option>
+    <option value="中医科">中医科</option>
+    <option value="针灸推拿科">针灸推拿科</option>
+    <option value="康复科">康复科</option>
+    <option value="西药房">西药房</option>
+    <option value="中药房">中药房</option>
 </select>
-</p><p class="clearfix">
+
+</p>
+    <p class="clearfix">
 
 <label for="email">擅长:</label>
 
 <!-- <input type="text" name="profession" placeholder="60字以内。例如：新生儿疾病" value="<?php echo $data["profession"]; ?>" id="email" class="input-text">
  -->
- <textarea rows="15" cols="55" name="profession" placeholder="60字以内。例如：新生儿疾病"><?php echo $data["profession"]; ?>
+ <textarea rows="15" cols="55" name="profession" placeholder="60字以内。例如：普外科各种常见疾病的诊治。
+ 甲状腺癌、乳腺癌、胃癌及大肠癌根治术；
+ 肝胆管复杂性结石处理；肝切除；
+ 腹腔镜下各种微创手术等。"><?php echo $data["profession"]; ?>
 </textarea>
 </p><p class="clearfix">
 <label for="email">个人简历<span style="color: crimson;">(*)</span>:</label>
-
-<textarea rows="15" cols="55" name="jianjie" placeholder="包括医学院校就读经历、工作经历、进修经历及在职学历教育经历。举例：
-    2000年-2005年  就读于浙江大学医学院临床医学专业，获医学学士学位；
-    2005年-至今  在玉环县人民医院儿科从事临床工作；
-    2010年  赴浙江大学附属儿童医院进修新生儿重症监护；
-    2013年-2015年 参加安徽医科大学在职研究生班，获医学硕士学位。
-">
-<?php echo $data["resume"]; ?>
-</textarea>
+    <ol>
+        <li>
+            <input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就读于<input type='text' name='jianli[]' value='' size='8' />学校，获得<input type='text' name='jianli[]' value='' size='3' />学位。
+        </li>
+        <button id='btn0'>增加一行</button>
+        <li>
+            <input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就职于<input type='text' name='jianli[]' value='' size='8' />医院，<input type='text' name='jianli[]' value='' size='3' />科室。
+        </li>
+        <button id='btn1'>增加一行</button>
+    </ol>
 </p><p class="clearfix">
         <label for="email">研究方向:</label>
 
@@ -381,17 +418,27 @@ switch ($data["educational_background"]) {
 ">
 <?php echo $data["resume"]; ?>
 </textarea>
-    </p><p class="clearfix">
-        <label for="email">医疗成果:</label>
 
-<textarea rows="20" cols="55" name="jianjie" placeholder="要求：填写重大科研成果及表彰情况、论文发表情况、因参与重大医疗或公共卫生事件获表彰情况等。
-    举例：
-    2001年在《中国危重病急救医学》第四期发表《氯磷定解救有机磷农药中毒对氧饱和度测值准确性影响的观察》。
 
-">
-<?php echo $data["resume"]; ?>
-</textarea>
     </p><p class="clearfix">
+        <label for="email">发表论文:</label>
+    <ol>
+        <li>
+            <input type='text' name='lunwen[]' value='' size='3' />年，在《<input type='text' name='lunwen[]' value='' size='10'/>》杂志，第<input type='text' name='lunwen[]' value='' size='1' />期发表论文《<input type='text' name='lunwen[]' value=''  size='20'/>》。
+        </li>
+    </ol>
+    <button id='btn2'>增加一行</button>
+    </p><p class="clearfix">
+        <label for="email">获奖情况（请填写县级以上荣誉）:</label>
+    <ol>
+        <li>
+            <input type='text' name='huojiang[]' value='' size='3' />年，荣获《<input type='text' name='huojiang[]' value='' size='10'/>》。
+        </li>
+    </ol>
+    <button id='btn3'>增加一行</button>
+    </p><p class="clearfix">
+
+
 </p>
 <p class="right">
 
