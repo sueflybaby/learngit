@@ -1,3 +1,13 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="Description" content="登入页面" />
+    <meta name="Keywords" content="登入" />
+    <link href="login.css" rel="stylesheet" type="text/css" media="all" />
+    <title>玉环县人民医院医师信息录入系统 登录</title>
+</head>
+<body>
 <?php
 //error_reporting(E_ALL^E_NOTICE^E_WARNING);
 //var_dump($_POST['name']);
@@ -30,49 +40,58 @@ $secret = trim($_POST['secret']);//接受传递的secret
 
 //echo isset($name);
 
-if(isset($name)>0){
+if(isset($name)){
   clearCookies();
-  include("conn.php");
-
+ // require_once("conn.php");
+	$mysql = new SaeMysql();
   //查询数据库并验证
 	$sql = "SELECT * FROM `personalinformation_users` WHERE `user` LIKE '{$name}'";
 	//echo $sql;
 	//查看是否有同等的用户
-	$data = $mysqli->query($sql);
+	//$data = $mysqli->query($sql);
+	$data = $mysql->getData($sql);
+	//var_dump($data);
+//echo $data->num_rows;
+	if(count($data)){
+       // echo "111";
+		$uuid_user = $data[0]['uuid'];
 
-	if($data->num_rows>0){
-        //echo "111";
-		$data_uuid = $data->fetch_assoc();
-
-		$uuid_user = $data_uuid["uuid"];
+		//$uuid_user = $data_uuid["uuid"];
 	}
-    //echo $uuid_user;
-    //var_dump(isset($uuid_user));
+
 	if(!empty($uuid_user)){
 		$guid = $uuid_user;
 	}else{
 		$guid = guid();
 	}
 //echo $guid;
-			if ($data_uuid["secret"]==$secret)
+			if ($data[0]['secret']===$secret)
 			{
-				//echo "111";
+
 			    setcookie('name',$name,time()+60*60*1);
 			    setcookie('islogin','1',time()+60*60*1);
-                //header("location:login.php?action=login");
-				header("location:index.php?name={$name}&uuid={$guid}");
+				//header("location:index.php?name={$name}&uuid={$guid}");
+				echo '<script language="javascript">
+    				 window.location.href="index.php?name='.$name.'&uuid='.$guid.'";
+			</script>';
 				exit();
 			}else{
+
 				echo '<script language="javascript">
    					 alert("用户名或者密码错误！");
-    				 window.location.href="login.html?action=longin";
+    				 window.location.href="login.html";
 			</script>';
+
             }
 		
 	
 	//s$data->free();
-	$mysqli->close();
+	//$mysqli->close();
+	$mysql->closeDb();
 }else{
 		clearCookies();
+	//echo "XXXX";
 }
 ?>
+</body>
+</html>

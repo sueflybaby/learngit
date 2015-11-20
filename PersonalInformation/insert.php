@@ -12,31 +12,31 @@
 	//var_dump($_POST);
 	$sql_check = "SELECT * FROM personalinformation_records where uuid like '{$_POST['uuid']}'";
 	
-	$sql = "INSERT INTO personalinformation_records (`id`,`uuid`, `name`, `gender`, `telephone`, `educational_background`, `academic_degree`, `academic_title`, `duty`, `office`, `profession`, `resume`,`study`,`medical`, `check`) VALUES(NULL,'{$_POST['uuid']}','{$_POST['name']}','{$_POST['gender']}','{$_POST['telephone']}','{$_POST['educational_background']}','{$_POST['academic_degree']}','{$_POST['s2']}','{$_POST['duty']}','{$_POST['keshi']}','{$_POST['profession']}','{$_POST['jianjie']}','{$_POST['study']}','{$_POST['medical']}','unchecked')";
+	$sql = "INSERT INTO personalinformation_records (`id`,`uuid`, `name`, `gender`, `telephone`, `educational_background`, `academic_degree`, `academic_title`, `duty`, `office`, `profession`, `resume`,`study`,`medical`, `check_rsk`, `check_ywk` ) VALUES(NULL,'{$_POST['uuid']}','{$_POST['name']}','{$_POST['gender']}','{$_POST['telephone']}','{$_POST['educational_background']}','{$_POST['academic_degree']}','{$_POST['s2']}','{$_POST['duty']}','{$_POST['keshi']}','{$_POST['profession']}','{$_POST['jianjie']}','{$_POST['study']}','{$_POST['medical']}','unchecked','unchecked')";
 	
 	$sql_update = "UPDATE personalinformation_records SET `name` = '{$_POST['name']}', `gender`='{$_POST['gender']}', `telephone`='{$_POST['telephone']}', `educational_background`='{$_POST['educational_background']}', `academic_degree`='{$_POST['academic_degree']}',`academic_title`='{$_POST['s2']}',`duty`='{$_POST['duty']}',`office`='{$_POST['duty']}',`profession`='{$_POST['profession']}',`resume`='{$_POST['jianjie']}','{$_POST['study']}','{$_POST['medical']}' WHERE  `uuid` LIKE '{$_POST['uuid']}'";
 
 	//echo $sql;
-	include("conn.php");
-
+	//include("conn.php");
+	$mysql = new SaeMysql();
 	if($_POST["from"]=="fromItem"){
-		$sql_update = "UPDATE personalinformation_records SET `name` = '{$_POST['name']}', `gender`='{$_POST['gender']}', `telephone`='{$_POST['telephone']}', `educational_background`='{$_POST['educational_background']}', `academic_degree`='{$_POST['academic_degree']}',`academic_title`='{$_POST['s2']}',`duty`='{$_POST['duty']}',`office`='{$_POST['duty']}',`profession`='{$_POST['profession']}',`resume`='{$_POST['jianjie']}','{$_POST['study']}','{$_POST['medical']}' `check`='checked' WHERE  `uuid` LIKE '{$_POST['uuid']}'";
-		$mysqli->query($sql_update);
+		$sql_update = "UPDATE personalinformation_records SET `name` = '{$_POST['name']}', `gender`='{$_POST['gender']}', `telephone`='{$_POST['telephone']}', `educational_background`='{$_POST['educational_background']}', `academic_degree`='{$_POST['academic_degree']}',`academic_title`='{$_POST['s2']}',`duty`='{$_POST['duty']}',`office`='{$_POST['duty']}',`profession`='{$_POST['profession']}',`resume`='{$_POST['jianjie']}','{$_POST['study']}','{$_POST['medical']}' WHERE  `uuid` LIKE '{$_POST['uuid']}'";
+		$mysql->runSql($sql_update);
 	}else{
 
-		$chaxun = $mysqli->query($sql_check);
+		$chaxun = $mysql->getData($sql_check);
 		//echo $chaxun->num_rows;
-		if (!($chaxun->num_rows)) {//为空，第一次提交
-			$mysqli->query($sql);
+		if (empty($chaxun)) {//为空，第一次提交
+			$mysql->runSql($sql);
 			//echo "location:index.php?name={$_POST['name']}&uuid={$_POST['uuid']}";
 			echo '<script language="javascript">
-   					 alert("修改成功！");
+   					 alert("提交成功！");
     				 window.location.href="login.html";
 			</script>';
 		}else{//非空，更新之
 			//echo $sql_update;
 			//echo "location:index.php?name={$_POST['name']}&uuid={$_POST['uuid']}";
-			$mysqli->query($sql_update);
+			$mysql->runSql($sql_update);
 			echo '<script language="javascript">
    					 alert("修改成功！");
     				 window.location.href="login.html";

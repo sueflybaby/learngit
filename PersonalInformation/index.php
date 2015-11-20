@@ -1,15 +1,19 @@
 <?php
-if(!(isset($_COOKIE['name']) && $_COOKIE['islogin'] == '1')){
-    header("location:login.php?action=login");
+if(!(isset($_COOKIE['name']) && ($_COOKIE['islogin'] === '1'))){
+    //echo "111";
+    header("location:login.html");
     exit();
 }else{
     //如果传入的name在评委数据库中没有查到 就提示查无此人 及返回重新登入，如果正确则获取相对应的score值
-    include("conn.php");
+    //include("conn.php");
+    $mysql = new SaeMysql();
     $check_pingwei = "SELECT * FROM `personalinformation_users` WHERE `user` like '%".$_COOKIE['name']."%'";
-    $result_check= $mysqli->query($check_pingwei);
-    //var_dump($result_check);
-    if (!$result_check->num_rows) {
-        header("location:login.php");
+    //$result_check= $mysqli->query($check_pingwei);
+    $result_check = $mysql->getData($check_pingwei);
+    ///var_dump($result_check);
+    //echo "222";
+    if (empty($result_check)) {
+        header("location:login.html");
         exit();
     }
 }
@@ -96,36 +100,47 @@ error_reporting(E_ALL^E_NOTICE^E_WARNING);
 <?php
 //var_dump($_POST);
   $login_name = $_COOKIE['name'];
+  
+  if (empty($login_name)) {
+    header("login.html");
+  }
+
   $uuid = $_GET["uuid"];
+  
   $sql = "SELECT * FROM personalinformation_records WHERE uuid like '{$uuid}'";
-$sql_update_uuid = "UPDATE personalinformation_users SET uuid='{$uuid}' WHERE  user LIKE '{$_COOKIE['name']}'";//更新uuid、在user注册表里
+  $sql_update_uuid = "UPDATE personalinformation_users SET uuid='{$uuid}' WHERE  user LIKE '{$_COOKIE['name']}'";//更新uuid、在user注册表里
 //echo $sql;
-$mysqli->query($sql_update_uuid);
-  $check = $mysqli->query($sql);
+$mysql->runSql($sql_update_uuid);
+//$mysqli->query($sql_update_uuid);
+  $check = $mysql->getData($sql);
   // 获取信息 查看是否是已经审核的内容
 
   //从数据库中获取该用户的信息，并自动填写相应的选项。
   //没有信息则为空
   //从login页面传递name
-	
-	
-	if (empty($login_name)) {
-		header("longin.php?action=longin");
-	}
-	
-	if ($check->num_rows>0) {
-		$data = $check->fetch_assoc();
+	//statusOfEdit 0表示均可以编辑 1表示只能编辑进一步的信息 无法修改基本信息 2表示均无法修改
+  $statusOfEdit = 0;
+	if (isset($check)) {
+		$data = $check[0];
 
     //var_dump($data);
-    if ($data["check"]=="checked") {
-      echo "<div class='head_title' >您的信息已经通过审核！</div>";
-    }else if($data["check"]=="tuihui"){
+    if ($data["check_rsk"]=="checked") {
+      $statusOfEdit = 1;
+      if ($data["check_ywk"]=="checked") {
+        echo "<div class='head_title' >您的信息已经通过审核！</div>";
+        $statusOfEdit = 2;
+      }else if($data["check_ywk"]=="tuihui") {
+        echo "<div class='head_title' >您的信息未通过医务科审核！</div>";
+      }else{
+        echo "<div class='head_title' >您的信息正在医务科审核中！</div>";
+      }
+    }else if($data["check_rsk"]=="tuihui"){
       echo "<div class='head_title' >您的信息被退回！请重新修改！</div>";
     }else{
-      echo "<div class='head_title' >您的信息正在审核中！</div>";
+      echo "<div class='head_title' >您的信息正在人事科审核中！</div>";
     }
 	}
-	$mysqli->close();
+	$mysql->closeDb();
 ?>
 <div id="opi" class="page-wrapper clearfix">
 <div class="full-page-holder">
@@ -136,30 +151,52 @@ $mysqli->query($sql_update_uuid);
 <div class="shadow">
 <div class="login-panel">
 <form method="post" id="loginForm" action="insert.php" focus="email">
-<h1 align="center">玉环县人民医院个人信息录入</h1>
+<h1 align="center">玉环县人民医院医师信息录入系统</h1>
 <p class="clearfix">
-<label for="email">姓名:</label>
 
-<input type="text" name="name" tabindex="1" value="<?php echo $data["name"]; ?>" id="email" class="input-text-name">
-    <span style="color: crimson;">(*)</span>
+<?php
+if($statusOfEdit = 1){//基本信息不能编辑
+  echo '<label for="email">姓名:</label>
+    <span style="color: crimson;">'.$data["name"].'</span>
 </p><p class="clearfix">
 <label for="email">性别:</label>
-<?php
+
+';
 if ($data["gender"]=="0") {
-	echo '<input name="gender" type="radio" value="1" /> 男
-<input name="gender" type="radio" value="0" checked /> 女';
-}else{
-	echo '<input name="gender" type="radio" value="1" checked/> 男
-<input name="gender" type="radio" value="0" /> 女';
-}
+    echo '<span style="color: crimson;">男</span>';
+  }else{
+    echo '<span style="color: crimson;">女</span>';
+  }
+echo '<label for="email">电话:</label>
+
+    <span style="color: crimson;">'.$data["telephone"].'</span>
+
+</p><p class="clearfix">';
+}else{//基本信息不能编辑
+  echo '<label for="email">姓名:</label>
+
+<input type="text" name="name" tabindex="1" value="'.$data["name"].'" id="email" class="input-text-name">
+    <span style="color: crimson;">(*)</span>
+    <label for="email">性别:</label>
+</p><p class="clearfix">';
+
+  if ($data["gender"]=="0") {
+    echo '<input name="gender" type="radio" value="1" /> 男
+  <input name="gender" type="radio" value="0" checked /> 女';
+  }else{
+    echo '<input name="gender" type="radio" value="1" checked/> 男
+  <input name="gender" type="radio" value="0" /> 女';
+  }
+
+  echo '<label for="email">电话:</label>
+
+  <input type="telephone" name="telephone" tabindex="1" value="<?php echo $data["telephone"]; ?>" id="email" class="input-text-telephone">
+
+  </p><p class="clearfix">';
+};
+
+
 ?>
-
-</p><p class="clearfix">
-<label for="email">电话:</label>
-
-<input type="telephone" name="telephone" tabindex="1" value="<?php echo $data["telephone"]; ?>" id="email" class="input-text-telephone">
-
-</p><p class="clearfix">
 <label for="email">学历:</label>
 <?php
 
@@ -321,8 +358,10 @@ switch ($data["educational_background"]) {
 
 <label for="email">擅长:</label>
 
-<input type="text" name="profession" placeholder="60字以内。例如：新生儿疾病" value="<?php echo $data["profession"]; ?>" id="email" class="input-text">
-
+<!-- <input type="text" name="profession" placeholder="60字以内。例如：新生儿疾病" value="<?php echo $data["profession"]; ?>" id="email" class="input-text">
+ -->
+ <textarea rows="15" cols="55" name="profession" placeholder="60字以内。例如：新生儿疾病"><?php echo $data["profession"]; ?>
+</textarea>
 </p><p class="clearfix">
 <label for="email">个人简历<span style="color: crimson;">(*)</span>:</label>
 
