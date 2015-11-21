@@ -7,7 +7,7 @@ if(!(isset($_COOKIE['name']) && ($_COOKIE['islogin'] === '1'))){
     //如果传入的name在评委数据库中没有查到 就提示查无此人 及返回重新登入，如果正确则获取相对应的score值
     //include("conn.php");
     $mysql = new SaeMysql();
-    $check_pingwei = "SELECT * FROM `personalinformation_users` WHERE `user` like '%".$_COOKIE['name']."%'";
+    $check_pingwei = "SELECT * FROM `personalinformation_users` WHERE `gonghao` like '%".$_COOKIE['name']."%'";
     //$result_check= $mysqli->query($check_pingwei);
     $result_check = $mysql->getData($check_pingwei);
     ///var_dump($result_check);
@@ -27,13 +27,18 @@ error_reporting(E_ALL^E_NOTICE^E_WARNING);
 <meta name="Keywords" content="登入" />
 <link href="login.css" rel="stylesheet" type="text/css" media="all" />
 <title>个人信息录入</title>
-    <script src='jquery-1.11.1.min.js'>
-    </script>
+    <script src='jquery-1.11.1.min.js'></script>
     <script>
 
         $(document).ready(function(){
-            var txt0 = "<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就读于<input type='text' name='jianli[]' value='' size='8' />学校，获得<input type='text' name='jianli[]' value='' size='3' />学位。<p></p>";
-            var txt1 = "<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就职于<input type='text' name='jianli[]' value='' size='8' />医院，<input type='text' name='jianli[]' value='' size='3' />科室。<p></p>";
+            var txt0 = "<input type='text' name='jianli0[]' value='' size='3' />年<input type='text' name='jianli0[]' " +
+                "value='' size='3' />月至<input type='text' name='jianli0[]' value='' size='3' />年<input type='text' " +
+                "name='jianli0[]' value='' size='3' />月，就读于<input type='text' name='jianli0[]' value='' size='8' " +
+                "/>学校，获得<input type='text' name='jianli0[]' value='' size='3' />学位。<p></p>";
+            var txt1 = "<input type='text' name='jianli1[]' value='' size='3' />年<input type='text' name='jianli1[]' " +
+                "value='' size='3' />月至<input type='text' name='jianli1[]' value='' size='3' />年<input type='text' " +
+                "name='jianli1[]' value='' size='3' />月，就职于<input type='text' name='jianli1[]' value='' size='8' " +
+                "/>医院，<input type='text' name='jianli1[]' value='' size='3' />科室。<p></p>";
             var txt2 = "<input type='text' name='lunwen[]' value='' size='3' />年，在《<input type='text' name='lunwen[]' value='' size='10'/>》杂志，第<input type='text' name='lunwen[]' value='' size='1' />期发表论文《<input type='text' name='lunwen[]' value=''  size='20'/>》。<p></p>";
             var txt3 = "<input type='text' name='huojiang[]' value='' size='3' />年，荣获《<input type='text' name='huojiang[]' value='' size='10'/>》。<p></p>";
             $('#btn0').click(function(){
@@ -53,69 +58,13 @@ error_reporting(E_ALL^E_NOTICE^E_WARNING);
                 $(this).before(txt3);
             });
         });
-    </script>
-<script type="text/javascript">
-    /*
-     **弹出弹窗提示
-     */
-    alert("此表涉及的信息将对外公布，请您认真如实的填写。");
-    /*
-/*  
-**    ====================================
-**    类名：CLASS_LIANDONG_YAO  
-**    功能：多级连动菜单  
-**    作者：YAODAYIZI     
-**/  	
-  function CLASS_LIANDONG_YAO(array)
-  {
-   //数组，联动的数据源
-  	this.array=array; 
-  	this.indexName='';
-  	this.obj='';
-  	//设置子SELECT
-	// 参数：当前onchange的SELECT ID，要设置的SELECT ID
-      this.subSelectChange=function(selectName1,selectName2)
-  	{
-  	//try
-  	//{
-    var obj1=document.all[selectName1];
-    var obj2=document.all[selectName2];
-    var objName=this.toString();
-    var me=this;
-    obj1.onchange=function()
-    {
-    	me.optionChange(this.options[this.selectedIndex].value,obj2.id)
-    }
-  	}
-  	//设置第一个SELECT
-	// 参数：indexName指选中项,selectName指select的ID
-  	this.firstSelectChange=function(indexName,selectName)  
-  	{
-  	this.obj=document.all[selectName];
-  	this.indexName=indexName;
-  	this.optionChange(this.indexName,this.obj.id)
-  	}
-  // indexName指选中项,selectName指select的ID
-  	this.optionChange=function (indexName,selectName)
-  	{
-    var obj1=document.all[selectName];
-    var me=this;
-    obj1.length=0;
-    obj1.options[0]=new Option("请选择",'');
-    for(var i=0;i<this.array.length;i++)
-    {	
-    	if(this.array[i][1]==indexName)
-    	{
-    	//alert(this.array[i][1]+" "+indexName);
-      obj1.options[obj1.length]=new Option(this.array[i][2],this.array[i][0]);
-    	}
-    }
-  	}	
-  }
+         /*
+         **弹出弹窗提示
+         */
 
-</script>
+        alert("此表涉及的信息将对外公布，请您认真如实的填写。");
 
-    <script>
+
         function save() {
             var contact_user = document.getElementById("name").value;
             var nickname = document.getElementById("telephone").value;
@@ -131,16 +80,16 @@ error_reporting(E_ALL^E_NOTICE^E_WARNING);
 
 <?php
 //var_dump($_POST);
-  $login_name = $_COOKIE['name'];
+  $gonghao = $login_name = $_COOKIE['name'];
   
   if (empty($login_name)) {
     header("login.html");
   }
-
+  //$gonghao = $_GET["gonghao"];
   $uuid = $_GET["uuid"];
   
-  $sql = "SELECT * FROM personalinformation_records WHERE uuid like '{$uuid}'";
-  $sql_update_uuid = "UPDATE personalinformation_users SET uuid='{$uuid}' WHERE  user LIKE '{$_COOKIE['name']}'";//更新uuid、在user注册表里
+  $sql = "SELECT * FROM personalinformation_records WHERE gonghao like '{$gonghao}'";
+  $sql_update_uuid = "UPDATE personalinformation_users SET uuid='{$uuid}' WHERE  gonghao LIKE '{$_COOKIE['name']}'";//更新uuid、在user注册表里
 //echo $sql;
 $mysql->runSql($sql_update_uuid);
 //$mysqli->query($sql_update_uuid);
@@ -199,11 +148,7 @@ if ($data["gender"]=="0") {
   }else{
     echo '<span style="color: crimson;">女</span>';
   }
-echo '<label for="email">电话:</label>
-
-    <span style="color: crimson;">'.$data["telephone"].'</span>
-
-</p><p class="clearfix">';
+echo '</p><p class="clearfix">';
 }else{//基本信息不能编辑
   echo '<label for="email">姓名:</label>
 
@@ -220,11 +165,7 @@ echo '<label for="email">电话:</label>
   <input name="gender" type="radio" value="0" /> 女';
   }
 
-  echo '<label for="email">电话:</label>
-
-  <input type="telephone" name="telephone" tabindex="1" value="<?php echo $data["telephone"]; ?>" id="email" class="input-text-telephone">
-
-  </p><p class="clearfix">';
+  echo '</p><p class="clearfix">';
 };
 
 
@@ -232,10 +173,10 @@ echo '<label for="email">电话:</label>
 <label for="email">学历:</label>
 <?php
 
-switch ($data["educational_background"]) {
+switch ($data["xueli"]) {
 	case '中专':
 		echo '
-		<select size="1" id="select" name="educational_background">
+		<select size="1" id="select" name="xueli">
         <option value="中专" selected="true" >中专</option>
         <option value="大专">大专</option>
         <option value="本科">本科</option>
@@ -247,7 +188,7 @@ switch ($data["educational_background"]) {
 		break;
 	case '大专':
 		echo '
-		<select size="1" id="select" name="educational_background">
+		<select size="1" id="select" name="xueli">
         <option value="中专" >中专</option>
         <option value="大专" selected="true" >大专</option>
         <option value="本科">本科</option>
@@ -259,7 +200,7 @@ switch ($data["educational_background"]) {
 		break;
 	case '研究生':
 			echo '
-		<select size="1" id="select" name="educational_background">
+		<select size="1" id="select" name="xueli">
         <option value="中专">中专</option>
         <option value="大专">大专</option>
         <option value="本科">本科</option>
@@ -271,7 +212,7 @@ switch ($data["educational_background"]) {
 		break;
 	case '博士':
 			echo '
-		<select size="1" id="select" name="educational_background">
+		<select size="1" id="select" name="xueli">
         <option value="中专">中专</option>
         <option value="大专">大专</option>
         <option value="本科">本科</option>
@@ -283,7 +224,7 @@ switch ($data["educational_background"]) {
 		break;
 	default:
 		echo '
-		<select size="1" id="select" name="educational_background">
+		<select size="1" id="select" name="xueli">
         <option value="中专">中专</option>
         <option value="大专">大专</option>
         <option value="本科" selected="true" >本科</option>
@@ -300,10 +241,10 @@ switch ($data["educational_background"]) {
 <label for="email">学位:</label>
 <?php
 
-switch ($data["educational_background"]) {
+switch ($data["xuewei"]) {
 	case '博士':
 		echo '
-		<select size="1" id="select" name="academic_degree">
+		<select size="1" id="select" name="xuewei">
         <option selected="true" value="学士">学士</option>
         <option value="硕士">硕士</option>
         <option value="博士">博士</option>
@@ -312,7 +253,7 @@ switch ($data["educational_background"]) {
 		break;
 	case '硕士':
 		echo '
-		<select size="1" id="select" name="academic_degree">
+		<select size="1" id="select" name="xuewei">
         <option value="学士">学士</option>
         <option selected="true" value="硕士">硕士</option>
         <option value="博士">博士</option>
@@ -321,7 +262,7 @@ switch ($data["educational_background"]) {
 		break;
 	default:
 		echo '
-		<select size="1" id="select" name="academic_degree">
+		<select size="1" id="select" name="xuewei">
         <option selected="true" value="学士">学士</option>
         <option value="硕士">硕士</option>
         <option value="博士">博士</option>
@@ -333,12 +274,13 @@ switch ($data["educational_background"]) {
         <span style="color: crimson;">(*)</span>
 </p><p class="clearfix">
 <label for="email">职称:</label>
-  	<SELECT ID="s1" NAME="s1"  >
-    <OPTION selected></OPTION>
-  	</SELECT>
-  	<SELECT ID="s2" NAME="s2"  >
-    <OPTION selected></OPTION>
-  	</SELECT>
+        <?php
+        if(!empty($data["zhicheng"])){
+            echo $data["zhicheng"];
+        }else{
+            echo '<input type="text" name="zhicheng" value="" size="5" />';
+        }
+        ?>
   	<br>
 
 </p><p class="clearfix">
@@ -402,11 +344,21 @@ switch ($data["educational_background"]) {
 <label for="email">个人简历<span style="color: crimson;">(*)</span>:</label>
     <ol>
         <li>
-            <input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就读于<input type='text' name='jianli[]' value='' size='8' />学校，获得<input type='text' name='jianli[]' value='' size='3' />学位。
+            <input type='text' name='jianli0[]' value='' size='3' />年<input type='text' name='jianli0[]' value=''
+                                                                            size='3' />月至<input type='text'
+                                                                                                name='jianli0[]'
+                                                                                                value='' size='3'
+                />年<input type='text' name='jianli0[]' value='' size='3' />月，就读于<input type='text' name='jianli0[]'
+                                                                                       value='' size='8' />学校，获得<input type='text' name='jianli0[]' value='' size='3' />学位。
         </li>
         <button id='btn0'>增加一行</button>
         <li>
-            <input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月至<input type='text' name='jianli[]' value='' size='3' />年<input type='text' name='jianli[]' value='' size='3' />月，就职于<input type='text' name='jianli[]' value='' size='8' />医院，<input type='text' name='jianli[]' value='' size='3' />科室。
+            <input type='text' name='jianli1[]' value='' size='3' />年<input type='text' name='jianli1[]' value=''
+                                                                            size='3' />月至<input type='text'
+                                                                                                name='jianli1[]'
+                                                                                                value='' size='3'
+                />年<input type='text' name='jianli1[]' value='' size='3' />月，就职于<input type='text' name='jianli1[]'
+                                                                                       value='' size='8' />医院，<input type='text' name='jianli1[]' value='' size='3' />科室。
         </li>
         <button id='btn1'>增加一行</button>
     </ol>
@@ -453,58 +405,8 @@ switch ($data["educational_background"]) {
 </div>
 </div>
 </div>
-
 </div>
 </div>
 </div>
 </div>
-<script type="text/javascript">
-
-//例子1-------------------------------------------------------------
-//数据源
-var array=new Array();
-  array[0]=new Array("护理","根目录","护理"); //数据格式 ID，父级ID，名称
-  array[1]=new Array("医师","根目录","医师");
-  array[2]=new Array("药学","根目录","药学");
-  array[3]=new Array("中药学","根目录","中药学");
-  array[4]=new Array("检验","根目录","检验");
-
-  array[5]=new Array("护士","护理","护士");
-  array[6]=new Array("护师","护理","护师");
-  array[7]=new Array("主管护师","护理","主管护师");
-  array[8]=new Array("副主任护师","护理","副主任护师");
-  array[9]=new Array("主任护师","护理","主任护师");
-
-  array[10]=new Array("助理医师","医师","助理医师");
-  array[11]=new Array("医师","医师","医师");
-  array[12]=new Array("主治医师","医师","主治医师");
-  array[13]=new Array("副主任医师","医师","副主任医师");
-  array[14]=new Array("主任医师","医师","主任医师");
-
-  array[15]=new Array("初级药士","药学","初级药士");
-  array[16]=new Array("初级药师","药学","初级药师");
-  array[17]=new Array("中级主管药师","药学","中级主管药师");
-  array[18]=new Array("副主任药剂师","药学","副主任药剂师");
-  array[19]=new Array("主任药剂师","药学","主任药剂师");
-
-  array[20]=new Array("初级中药士","中药学","初级中药士");
-  array[21]=new Array("初级中药师","中药学","初级中药师");
-  array[22]=new Array("中级主管中药师","中药学","中级主管中药师");
-  array[23]=new Array("副主任药剂师","中药学","副主任药剂师");
-  array[24]=new Array("主任药剂师","中药学","主任药剂师");
-
-  array[25]=new Array("初级检验技士","检验","初级检验技士");
-  array[26]=new Array("初级检验技师","检验","初级检验技师");
-  array[27]=new Array("检验主管技师","检验","检验主管技师");
-  array[28]=new Array("副主任检验师","检验","副主任检验师");
-  array[29]=new Array("主任检验师","检验","主任检验师");
-  //--------------------------------------------
-  //这是调用代码
-  var liandong=new CLASS_LIANDONG_YAO(array) //设置数据源
-  liandong.firstSelectChange("根目录","s1"); //设置第一个选择框
-  liandong.subSelectChange("s1","s2"); //设置子级选择框
-</script>
-
-
-
 </body></html>

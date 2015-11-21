@@ -35,17 +35,17 @@ function guid(){
 	}
 }
 
-$name =  trim($_POST['name']);//接受传递的name 如果同名则不行 需要一个唯一的id识别号码
+$gonghao =  trim($_POST['name']);//接受传递的name 如果同名则不行 需要一个唯一的id识别号码
 $secret = trim($_POST['secret']);//接受传递的secret
 
 //echo isset($name);
 
-if(isset($name)){
+if(isset($gonghao)){
   clearCookies();
  // require_once("conn.php");
 	$mysql = new SaeMysql();
   //查询数据库并验证
-	$sql = "SELECT * FROM `personalinformation_users` WHERE `user` LIKE '{$name}'";
+	$sql = "SELECT * FROM `personalinformation_users` WHERE `gonghao` LIKE '{$gonghao}'";
 	//echo $sql;
 	//查看是否有同等的用户
 	//$data = $mysqli->query($sql);
@@ -72,7 +72,7 @@ if(isset($name)){
 			    setcookie('islogin','1',time()+60*60*1);
 				//header("location:index.php?name={$name}&uuid={$guid}");
 				echo '<script language="javascript">
-    				 window.location.href="index.php?name='.$name.'&uuid='.$guid.'";
+    				 window.location.href="index.php?name='.$gonghao.'&uuid='.$guid.'";
 			</script>';
 				exit();
 			}else{
