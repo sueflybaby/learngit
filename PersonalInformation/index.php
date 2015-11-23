@@ -1,11 +1,11 @@
 <?php
-if(!(isset($_COOKIE['name']) && ($_COOKIE['islogin'] == '1'))){
+if(!(isset($_COOKIE['name']) && ($_COOKIE['islogin'] === '1'))){
     //echo "111";
     header("location:login.html");
-    //exit();
+    exit();
 }else{
     //如果传入的name在评委数据库中没有查到 就提示查无此人 及返回重新登入，如果正确则获取相对应的score值
-    //include("conn.php");
+    include("conn.php");
     $mysql = new SaeMysql();
     $check_pingwei = "SELECT * FROM `personalinformation_users` WHERE `gonghao` like '%".$_COOKIE['name']."%'";
     //$result_check= $mysqli->query($check_pingwei);
@@ -61,8 +61,9 @@ error_reporting(E_ALL^E_NOTICE^E_WARNING);
          /*
          **弹出弹窗提示
          */
-
-        alert("此表涉及的信息将对外公布，请您认真如实的填写。");
+    </script>
+    <script>
+       // alert("此表涉及的信息将对外公布，请您认真如实的填写。");
 
 
         function save() {
@@ -118,7 +119,7 @@ $mysql->runSql($sql_update_uuid);
     }else if($data["check_rsk"]=="tuihui"){
       echo "<div class='head_title' >您的信息被退回！请重新修改！</div>";
     }else{
-      echo "<div class='head_title' >您的信息正在人事科审核中！</div>";
+      echo "<div class='head_title_green' >此表涉及的信息将对外公布，请您认真如实的填写！</div>";
     }
 	}
 	$mysql->closeDb();
@@ -136,42 +137,14 @@ $mysql->runSql($sql_update_uuid);
 <p class="clearfix">
 
 <?php
-if($statusOfEdit = 1){//基本信息不能编辑
-  echo '<label for="email">姓名:</label>
+
+echo '<label for="email">姓名:</label>
     <span style="color: crimson;">'.$data["name"].'</span>
-</p><p class="clearfix">
-<label for="email">性别:</label>
-
-';
-if ($data["gender"]=="0") {
-    echo '<span style="color: crimson;">男</span>';
-  }else{
-    echo '<span style="color: crimson;">女</span>';
-  }
-echo '</p><p class="clearfix">';
-}else{//基本信息不能编辑
-  echo '<label for="email">姓名:</label>
-
-<input type="text" name="name" tabindex="1" value="'.$data["name"].'" id="email" class="input-text-name">
-    <span style="color: crimson;">(*)</span>
-    <label for="email">性别:</label>
-</p><p class="clearfix">';
-
-  if ($data["gender"]=="0") {
-    echo '<input name="gender" type="radio" value="1" /> 男
-  <input name="gender" type="radio" value="0" checked /> 女';
-  }else{
-    echo '<input name="gender" type="radio" value="1" checked/> 男
-  <input name="gender" type="radio" value="0" /> 女';
-  }
-
-  echo '</p><p class="clearfix">';
-};
-
-
-?>
-<label for="email">学历:</label>
-<?php
+    </p><p class="clearfix">
+    <label for="email">性别:</label>';
+echo '<span style="color: crimson;">'.$data["gender"].'</span>';
+echo '</p><p class="clearfix">
+    <label for="email">学历:</label>';
 
 switch ($data["xueli"]) {
 	case '中专':
@@ -335,15 +308,27 @@ switch ($data["xuewei"]) {
 
 <!-- <input type="text" name="profession" placeholder="60字以内。例如：新生儿疾病" value="<?php echo $data["profession"]; ?>" id="email" class="input-text">
  -->
- <textarea rows="15" cols="55" name="profession" placeholder="60字以内。例如：普外科各种常见疾病的诊治。
+ <textarea rows="8" cols="58" name="profession" placeholder="60字以内。例如：普外科各种常见疾病的诊治。
  甲状腺癌、乳腺癌、胃癌及大肠癌根治术；
  肝胆管复杂性结石处理；肝切除；
  腹腔镜下各种微创手术等。"><?php echo $data["profession"]; ?>
 </textarea>
-</p><p class="clearfix">
-<label for="email">个人简历<span style="color: crimson;">(*)</span>:</label>
-    <ol>
-        <li>
+
+    </p><p class="clearfix">
+
+        <label for="email">研究方向:</label>
+
+        <textarea rows="7" cols="55" name="jianjie" placeholder="要求：填写科研课题或晋升晋级论文方向。
+        举例：心脏起搏和电生理、冠心病与相关基因多态性关系的研究。
+        ">
+        <?php echo $data["resume"]; ?>
+        </textarea>
+
+    </p><p class="clearfix">
+
+        <label for="email" style="font-weight: bolder;">个人简历:</label><span style="color: crimson;">(*)</span>
+    <ol id="email">
+        <li id="email">
             <input type='text' name='jianli0[]' value='' size='3' />年<input type='text' name='jianli0[]' value=''
                                                                             size='3' />月至<input type='text'
                                                                                                 name='jianli0[]'
@@ -351,8 +336,10 @@ switch ($data["xuewei"]) {
                 />年<input type='text' name='jianli0[]' value='' size='3' />月，就读于<input type='text' name='jianli0[]'
                                                                                        value='' size='8' />学校，获得<input type='text' name='jianli0[]' value='' size='3' />学位。
         </li>
-        <button id='btn0'>增加一行</button>
-        <li>
+        <br><p>
+        <input type="button" id='btn0' value="增加一行"></input>
+        </p>
+        <li id="email">
             <input type='text' name='jianli1[]' value='' size='3' />年<input type='text' name='jianli1[]' value=''
                                                                             size='3' />月至<input type='text'
                                                                                                 name='jianli1[]'
@@ -360,34 +347,29 @@ switch ($data["xuewei"]) {
                 />年<input type='text' name='jianli1[]' value='' size='3' />月，就职于<input type='text' name='jianli1[]'
                                                                                        value='' size='8' />医院，<input type='text' name='jianli1[]' value='' size='3' />科室。
         </li>
-        <button id='btn1'>增加一行</button>
+        <br>
+        <input type="button" id='btn1' value="增加一行"></input>
+        <br>
     </ol>
 </p><p class="clearfix">
-        <label for="email">研究方向:</label>
 
-<textarea rows="7" cols="55" name="jianjie" placeholder="要求：填写科研课题或晋升晋级论文方向。
-举例：心脏起搏和电生理、冠心病与相关基因多态性关系的研究。
-">
-<?php echo $data["resume"]; ?>
-</textarea>
-
-
-    </p><p class="clearfix">
-        <label for="email">发表论文:</label>
-    <ol>
-        <li>
+        <label for="email" style="font-weight: bolder;">发表论文:</label>
+    <ol id="email">
+        <li id="email">
             <input type='text' name='lunwen[]' value='' size='3' />年，在《<input type='text' name='lunwen[]' value='' size='10'/>》杂志，第<input type='text' name='lunwen[]' value='' size='1' />期发表论文《<input type='text' name='lunwen[]' value=''  size='20'/>》。
         </li>
     </ol>
-    <button id='btn2'>增加一行</button>
+    <br>
+    <input type="button" id='btn2' value="增加一行"></input>
     </p><p class="clearfix">
-        <label for="email">获奖情况（请填写县级以上荣誉）:</label>
-    <ol>
-        <li>
+        <label for="email" style="font-weight: bolder;">获奖情况:</label><span>（请填写县级以上荣誉）</span>
+    <ol id="email">
+        <li id="email">
             <input type='text' name='huojiang[]' value='' size='3' />年，荣获《<input type='text' name='huojiang[]' value='' size='10'/>》。
         </li>
     </ol>
-    <button id='btn3'>增加一行</button>
+    <br>
+    <input type="button" id='btn3' value="增加一行"></input>
     </p><p class="clearfix">
 
 
@@ -397,10 +379,10 @@ switch ($data["xuewei"]) {
 <input type="hidden" name="uuid" value="<?php echo $uuid; ?>" />
     <input type="hidden" name="from" value="fromIndex" />
 <input type="hidden" name="isplogin" value="true" />
-<input type="submit" id="login" tabindex="4" name="submit" class="input-submit large" value="提交" />
+<input type="submit" id="login" tabindex="4" name="submit" class="input-submit large" value="提交审核" />
 </p>
 <div class="separator"></div>
-<p class="no-account">巨石工作室 苏维杰</p>
+<p class="no-account">玉环县人民医院 巨石工作室</p>
 </form>
 </div>
 </div>

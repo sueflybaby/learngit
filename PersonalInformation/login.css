@@ -142,7 +142,7 @@ input.large{padding:3px 15px;font-size:14px;_padding:5px 10px 2px}
 .login .search-friends .search-form {float:right;}
 
 /* Full login page */
-.full-login {float:left;width:500px;padding-top:20%;margin-left: -250px;}
+.full-login {float:left;width:600px;padding-top:20%;margin-left: -250px;}
 .full-login .login-panel .inner{border:1px solid #b8d4e8; padding:20px; background-color:#f0f5f8}
 
 .full-login .login-panel h2 {margin-bottom:15px;}
@@ -158,6 +158,7 @@ input.large{padding:3px 15px;font-size:14px;_padding:5px 10px 2px}
 /* coustomize */
 .head_title {width: 1000px;height:30px;margin-left:-500px;padding-left:-500px;font-size:20px;font-weight:bolder;background-color: #FF6600;color: black;text-align: center;vertical-align: middle;}
 
+.head_title_green{width: 1000px;height:30px;margin-left:-500px;padding-left:-500px;font-size:20px;font-weight:bolder;background-color: #18ff4d;color: #ff320b;text-align: center;vertical-align: middle;}
 
 
 
