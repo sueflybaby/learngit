@@ -35,7 +35,7 @@ function guid(){
 	}
 }
 
-$gonghao =  trim($_POST['name']);//接受传递的name 如果同名则不行 需要一个唯一的id识别号码
+$gonghao =  strtoupper(trim($_POST['name']));//接受传递的name 如果同名则不行 需要一个唯一的id识别号码
 $secret = trim($_POST['secret']);//接受传递的secret
 
 //echo isset($name);
@@ -65,10 +65,10 @@ if(isset($gonghao)){
 		$guid = guid();
 	}
 //echo $guid;
-			if ($data[0]['secret']===$secret)
+			if ($data[0]['secret']==$secret)
 			{
 
-			    setcookie('name',$name,time()+60*60*1);
+			    setcookie('name',$gonghao,time()+60*60*1);
 			    setcookie('islogin','1',time()+60*60*1);
 				//header("location:index.php?name={$name}&uuid={$guid}");
 				echo '<script language="javascript">
