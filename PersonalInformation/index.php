@@ -1,8 +1,8 @@
 <?php
-if(!(isset($_COOKIE['name']) && ($_COOKIE['islogin'] === '1'))){
+if(!(isset($_COOKIE['name']) && ($_COOKIE['islogin'] == '1'))){
     //echo "111";
     header("location:login.html");
-    exit();
+    //exit();
 }else{
     //如果传入的name在评委数据库中没有查到 就提示查无此人 及返回重新登入，如果正确则获取相对应的score值
     //include("conn.php");

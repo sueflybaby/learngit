@@ -65,26 +65,25 @@ if(isset($gonghao)){
 		$guid = guid();
 	}
 //echo $guid;
-			if ($data[0]['secret']==$secret)
-			{
 
-			    setcookie('name',$gonghao,time()+60*60*1);
-			    setcookie('islogin','1',time()+60*60*1);
-				//header("location:index.php?name={$name}&uuid={$guid}");
-				echo '<script language="javascript">
-    				 window.location.href="index.php?name='.$gonghao.'&uuid='.$guid.'";
-			</script>';
-				exit();
-			}else{
+	if ($data[0]['secret']==$secret)
+	{
 
-				echo '<script language="javascript">
-   					 alert("用户名或者密码错误！");
-    				 window.location.href="login.html";
-			</script>';
+		setcookie('name',$gonghao,time()+60*60*1);
+		setcookie('islogin','1',time()+60*60*1);
+		//header("location:index.php?name={$name}&uuid={$guid}");
+		echo '<script language="javascript">
+			 window.location.href="index.php?name='.$gonghao.'&uuid='.$guid.'";
+			  </script>';
+		exit();
+	}else{
 
-            }
-		
-	
+		echo '<script language="javascript">
+			 alert("用户名或者密码错误！");
+			 window.location.href="login.html";
+			  </script>';
+
+	}
 	//s$data->free();
 	//$mysqli->close();
 	$mysql->closeDb();
